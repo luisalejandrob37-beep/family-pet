@@ -82,15 +82,18 @@ const usuariosRoutes = require("./routes/usuarios");
 app.use("/usuarios", usuariosRoutes);
 
 // =====================================
-// PUERTO
+// PUERTO PARA RENDER
 // =====================================
+
+// Render proporciona el puerto mediante process.env.PORT.
+// En local utilizará el puerto 4000.
 
 const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, "0.0.0.0", () => {
 
     console.log(
-        `🚀 Servidor Family Pet iniciado en http://localhost:${PORT}`
+        `🚀 Servidor Family Pet iniciado en el puerto ${PORT}`
     );
 
-})
+});
