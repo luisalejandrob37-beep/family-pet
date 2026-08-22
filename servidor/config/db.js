@@ -2,6 +2,7 @@ const mysql = require("mysql2");
 
 // =====================================
 // CONEXIÓN MYSQL - FAMILY PET
+// AIVEN + RENDER
 // =====================================
 
 const conexion = mysql.createConnection({
@@ -14,7 +15,12 @@ const conexion = mysql.createConnection({
 
     database: process.env.DB_NAME,
 
-    port: process.env.DB_PORT || 3306
+    port: process.env.DB_PORT || 3306,
+
+    // Aiven requiere conexión SSL
+    ssl: {
+        rejectUnauthorized: false
+    }
 
 });
 
@@ -22,9 +28,9 @@ const conexion = mysql.createConnection({
 // COMPROBAR CONEXIÓN
 // =====================================
 
-conexion.connect((error)=>{
+conexion.connect((error) => {
 
-    if(error){
+    if (error) {
 
         console.log("❌ Error al conectar con MySQL");
 
