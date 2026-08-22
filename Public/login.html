@@ -108,74 +108,101 @@ Registrarse
 
 <script>
 
+// =====================================
+// CONFIGURACIÓN DEL SERVIDOR
+// =====================================
+
+const API_URL = "http://localhost:3000";
+
+// =====================================
+// INICIO DE SESIÓN
+// =====================================
+
 const formulario = document.getElementById("loginForm");
 
-formulario.addEventListener("submit", async(e)=>{
+formulario.addEventListener("submit", async (e) => {
 
-e.preventDefault();
+    e.preventDefault();
 
-const correo=document.getElementById("correo").value;
+    const correo =
+        document.getElementById("correo").value.trim();
 
-const password=document.getElementById("password").value;
+    const password =
+        document.getElementById("password").value;
 
-const mensaje=document.getElementById("mensaje");
+    const mensaje =
+        document.getElementById("mensaje");
 
-try{
+    try {
 
-const respuesta = await fetch(
-"http://localhost:3000/api/login",
-{
+        const respuesta = await fetch(
+            `${API_URL}/api/login`,
+            {
 
-method:"POST",
+                method: "POST",
 
-headers:{
-"Content-Type":"application/json"
-},
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
-body:JSON.stringify({
-correo,
-password
-})
+                body: JSON.stringify({
+                    correo,
+                    password
+                })
 
-});
+            }
+        );
 
-const datos = await respuesta.json();
+        const datos = await respuesta.json();
 
-if(respuesta.ok){
+        if (respuesta.ok) {
 
-localStorage.setItem(
-"usuario",
-JSON.stringify(datos.usuario)
-);
+            // Guardar usuario
+            localStorage.setItem(
+                "usuario",
+                JSON.stringify(datos.usuario)
+            );
 
-mensaje.style.color="green";
+            // Compatibilidad con el sistema anterior
+            localStorage.setItem(
+                "usuarioLogueado",
+                "true"
+            );
 
-mensaje.innerHTML="✅ Inicio de sesión correcto";
+            mensaje.style.color = "green";
 
-setTimeout(()=>{
+            mensaje.innerHTML =
+                "✅ Inicio de sesión correcto";
 
-window.location.href="family_pet.html";
+            setTimeout(() => {
 
-},1000);
+                window.location.href =
+                    "family_pet.html";
 
-}else{
+            }, 1000);
 
-mensaje.style.color="red";
+        } else {
 
-mensaje.innerHTML="❌ "+datos.mensaje;
+            mensaje.style.color = "red";
 
-}
+            mensaje.innerHTML =
+                "❌ " + (datos.mensaje || "Error al iniciar sesión");
 
-}catch(error){
+        }
 
-mensaje.style.color="red";
+    } catch (error) {
 
-mensaje.innerHTML=
-"❌ Error al conectar con el servidor";
+        mensaje.style.color = "red";
 
-console.log(error);
+        mensaje.innerHTML =
+            "❌ No se pudo conectar con el servidor.";
 
-}
+        console.error(
+            "Error de conexión:",
+            error
+        );
+
+    }
 
 });
 
