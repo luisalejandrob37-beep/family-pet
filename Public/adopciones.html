@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adopción de Mascotas</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+body{
+    background:linear-gradient(135deg,#d43a3af5,#ffe159);
+    min-height:100vh;
+    padding:20px;
+}
+h1{
+    text-align:center;
+    color:white;
+    font-size:42px;
+    text-shadow:2px 2px 8px rgba(0,0,0,.4);
+    margin-bottom:20px;
+}
+.descripcion-servicio{
+    max-width:1000px;
+    margin:20px auto;
+    background:#fff;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+}
+.descripcion-servicio p{
+    line-height:1.8;
+    color:#555;
+    margin-bottom:10px;
+}
+.mascotas-grid{
+    max-width:1200px;
+    margin:30px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+.card-mascota{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+    text-align:center;
+    transition:.3s;
+}
+.card-mascota:hover{
+    transform:translateY(-8px);
+}
+.card-mascota img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+.card-mascota h3{
+    color:#e67e22;
+    margin:15px 0;
+}
+.card-mascota p{
+    margin:8px 15px;
+    color:#555;
+}
+.card-mascota button{
+    width:90%;
+    margin:15px;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#e67e22;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+.card-mascota button:hover{
+    background:#ca6f1e;
+}
+.formulario-vet{
+    max-width:1000px;
+    margin:20px auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+.formulario-vet h2{
+    text-align:center;
+    background:#e67e22;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+.grupo-completo{
+    grid-column:1/3;
+}
+label{
+    display:block;
+    margin-bottom:5px;
+    font-weight:bold;
+    color:#34495e;
+}
+input,
+select,
+textarea{
+    width:100%;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+input:focus,
+select:focus,
+textarea:focus{
+    outline:none;
+    border-color:#e67e22;
+}
+.btn-enviar{
+    width:100%;
+    margin-top:15px;
+    padding:12px;
+    background:#e67e22;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+.btn-enviar:hover{
+    background:#ca6f1e;
+}
+.mensaje{
+    margin-top:15px;
+    padding:10px;
+    background:#eafaf1;
+    color:#27ae60;
+    border-radius:8px;
+    text-align:center;
+    font-weight:bold;
+}
+.volver{
+    display:inline-block;
+    margin-top:20px;
+    padding:10px 18px;
+    background:#07c8f8;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+}
+.volver:hover{
+    background:#059dc2;
+}
+@media(max-width:768px){
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+    .grupo-completo{
+        grid-column:auto;
+    }
+}
+</style>
+</head>
+<body>
+<h1>🐾 Adopción de Mascotas</h1>
+<div class="descripcion-servicio">
+    <p>
+        Nuestro programa de adopción busca brindar una segunda oportunidad a mascotas
+        que necesitan un hogar lleno de amor, protección y cuidados.
+    </p>
+    <p>
+        Todas nuestras mascotas reciben atención veterinaria, vacunación,
+        desparasitación y seguimiento antes de ser entregadas a su nueva familia.
+        Adoptar es un acto de amor que cambia vidas.
+    </p>
+</div>
+<h2 style="text-align:center; margin:30px 0;">
+🐶 Mascotas Disponibles para Adopción
+</h2>
+<div class="mascotas-grid">
+    <div class="card-mascota">
+        <img src="https://www.aon.es/personales/seguro-perro-gato/wp-content/uploads/sites/2/2021/05/perro-labrador.jpg">
+        <h3>Max</h3>
+        <p><strong>Especie:</strong> Perro</p>
+        <p><strong>Edad:</strong> 2 años</p>
+        <p><strong>Raza:</strong> Labrador</p>
+        <p><strong>Estado:</strong> Vacunado y desparasitado</p>
+        <button onclick="seleccionarMascota('Max')">Adoptar</button>
+    </div>
+    <div class="card-mascota">
+        <img src="https://www.elespectador.com/resizer/v2/VWG5YLUQP5FHFGVU4PQK2QTU3U.jpg?auth=9ddacf585a065c1a9c59a6b3816bf7f18edd13b616f2e8918f5b8b3190c50195&width=920&height=613&smart=true&quality=60">
+        <h3>Luna</h3>
+        <p><strong>Especie:</strong> Gata</p>
+        <p><strong>Edad:</strong> 1 año</p>
+        <p><strong>Raza:</strong> Siamés</p>
+        <p><strong>Estado:</strong> Esterilizada y vacunada</p>
+        <button onclick="seleccionarMascota('Luna')">Adoptar</button>
+    </div>
+    <div class="card-mascota">
+        <img src="https://media-eu.husse.com/media/8b/43/9d/1607076943/iStock-516493642.jpg">
+        <h3>Rocky</h3>
+        <p><strong>Especie:</strong> Perro</p>
+        <p><strong>Edad:</strong> 5 meses</p>
+        <p><strong>Raza:</strong> Bulldog</p>
+        <p><strong>Estado:</strong> Vacunado</p>
+        <button onclick="seleccionarMascota('Rocky')">Adoptar</button>
+    </div>
+    <div class="card-mascota">
+        <img src="https://cdn.nubika.es/wp-content/uploads/2024/05/30083546/cuidados-gato-persa.jpg">
+        <h3>Milo</h3>
+        <p><strong>Especie:</strong> Gato</p>
+        <p><strong>Edad:</strong> 1 año</p>
+        <p><strong>Raza:</strong> Persa</p>
+        <p><strong>Estado:</strong> Vacunado</p>
+        <button onclick="seleccionarMascota('Milo')">Adoptar</button>
+    </div>
+    <div class="card-mascota">
+        <img src="https://www.vanguardia.com/resizer/v2/webminitoy7bigcevl419171mg19903787jpg-DD64QBEQPRAUJBYUSZB6CIS6ZM.jpg?auth=48f6c53802c1bc58c3b883394dd9aeef45de47d407ace672628ace0a1ab620d9&smart=true&width=1200&height=800&quality=70">
+        <h3>Nala</h3>
+        <p><strong>Especie:</strong> Perra</p>
+        <p><strong>Edad:</strong> 6 meses</p>
+        <p><strong>Raza:</strong> Poodle</p>
+        <p><strong>Estado:</strong> Vacunada</p>
+        <button onclick="seleccionarMascota('Nala')">Adoptar</button>
+    </div>
+</div>
+<div id="f1" class="formulario-vet" style="display:none;">
+<h2>📋 Formulario de Solicitud de Adopción</h2>
+<form id="adopcionForm">
+<div class="form-grid">
+<div>
+<label>Nombre completo *</label>
+<input type="text" required>
+</div>
+<div>
+<label>Correo electrónico *</label>
+<input type="email" required>
+</div>
+<div>
+<label>Teléfono *</label>
+<input type="tel" required>
+</div>
+<div>
+<label>Ciudad *</label>
+<input type="text" required>
+</div>
+<div>
+<label>Edad *</label>
+<input type="number" min="18" required>
+</div>
+<div>
+<label>Tipo de vivienda *</label>
+<select required>
+<option value="">Seleccione</option>
+<option>Casa</option>
+<option>Apartamento</option>
+<option>Finca</option>
+</select>
+</div>
+<div>
+<label>¿Tiene otras mascotas? *</label>
+<select required>
+<option value="">Seleccione</option>
+<option>Sí</option>
+<option>No</option>
+</select>
+</div>
+<div>
+<label>¿Tiene experiencia cuidando mascotas?</label>
+<select>
+<option>Sí</option>
+<option>No</option>
+</select>
+</div>
+<div class="grupo-completo">
+<label>Mascota seleccionada *</label>
+<select id="mascota" required>
+<option value="">Seleccione una mascota</option>
+</select>
+</div>
+<div class="grupo-completo">
+<label>¿Por qué desea adoptar esta mascota? *</label>
+<textarea rows="5" required></textarea>
+</div>
+<div class="grupo-completo">
+<label>Información adicional</label>
+<textarea rows="4"></textarea>
+</div>
+</div>
+<button type="submit" class="btn-enviar">
+🐾 Enviar Solicitud de Adopción
+</button>
+<div id="mensajeExito" class="mensaje"></div>
+<a href="refugio.html" class="volver">
+⬅ Volver al inicio
+</a>
+</form>
+</div>
+<script>
+
+
+// Datos de las mascotas
+const mascotas = {
+    "Max": {
+        especie: "Perro",
+        raza: "Labrador",
+        edad: "2 años"
+    },
+    "Luna": {
+        especie: "Gata",
+        raza: "Siamés",
+        edad: "1 año"
+    },
+    "Rocky": {
+        especie: "Perro",
+        raza: "Bulldog",
+        edad: "5 meses"
+    },
+    "Milo": {
+        especie: "Gato",
+        raza: "Persa",
+        edad: "1 año"
+    },
+    "Nala": {
+        especie: "Perra",
+        raza: "Poodle",
+        edad: "6 meses"
+    }
+};
+
+function seleccionarMascota(nombre){
+
+    document.getElementById("f1").style.display = "block";
+
+    document.getElementById("mascota").innerHTML =
+    `<option value="${nombre}" selected>${nombre}</option>`;
+
+    document.getElementById("f1").scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+document.getElementById("adopcionForm").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    let nombreCliente =
+        document.querySelector('input[type="text"]').value;
+
+    let correo =
+        document.querySelector('input[type="email"]').value;
+
+    let telefono =
+        document.querySelector('input[type="tel"]').value;
+
+    let mascotaSeleccionada =
+        document.getElementById("mascota").value;
+
+    let datosMascota =
+        mascotas[mascotaSeleccionada];
+
+    let mensaje =
+`🐾 SOLICITUD DE ADOPCIÓN 🐾
+
+👤 Nombre: ${nombreCliente}
+📧 Correo: ${correo}
+📱 Teléfono: ${telefono}
+
+🐶 Mascota: ${mascotaSeleccionada}
+🐾 Especie: ${datosMascota.especie}
+🏷️ Raza: ${datosMascota.raza}
+🎂 Edad: ${datosMascota.edad}
+
+Deseo realizar el proceso de adopción.`;
+
+    // CAMBIA ESTE NÚMERO POR TU WHATSAPP
+    let numeroWhatsApp = "573150672371";
+
+    let url =
+    `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+
+    window.open(url, "_blank");
+
+    document.getElementById("mensajeExito").innerHTML =
+    "✅ Redirigiendo a WhatsApp para enviar la solicitud.";
+
+});
+
+</script>
+</body>
+</html>

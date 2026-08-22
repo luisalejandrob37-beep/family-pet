@@ -1,0 +1,2247 @@
+/*==================================================
+                FAMILY PET
+                estilos.css
+==================================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f5f8fc;
+    color:#333;
+    overflow-x:hidden;
+}
+
+/*=========================================
+VARIABLES
+=========================================*/
+
+:root{
+
+    --verde:#16a34a;
+    --verdeOscuro:#15803d;
+    --azul:#2563eb;
+    --azulOscuro:#1d4ed8;
+    --gris:#555;
+    --blanco:#fff;
+
+    --sombra:0 10px 25px rgba(0,0,0,.12);
+
+}
+
+/*=========================================
+CONTENEDOR
+=========================================*/
+
+.contenedor{
+
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+
+}
+
+/*=========================================
+TOP BAR
+=========================================*/
+
+.top-bar{
+
+    background:linear-gradient(90deg,var(--verde),var(--azul));
+
+    color:#fff;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:10px 40px;
+
+    flex-wrap:wrap;
+
+    font-size:14px;
+
+}
+
+.top-bar div{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+/*=========================================
+HEADER
+=========================================*/
+
+.header{
+
+    position:sticky;
+
+    top:0;
+
+    background:#fff;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:15px 40px;
+
+    box-shadow:var(--sombra);
+
+    z-index:999;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.logo img{
+
+    width:55px;
+
+}
+
+.logo h1{
+
+    color:var(--verde);
+
+    font-size:28px;
+
+}
+
+.logo span{
+
+    color:var(--azul);
+
+    font-size:13px;
+
+}
+
+nav{
+
+    display:flex;
+
+    gap:22px;
+
+}
+
+nav a{
+
+    color:#333;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+nav a:hover{
+
+    color:var(--verde);
+
+}
+
+#menuBtn{
+
+    display:none;
+
+    background:none;
+
+    border:none;
+
+    font-size:28px;
+
+    color:var(--azul);
+
+    cursor:pointer;
+
+}
+
+/*==================================================
+            MODO OSCURO COMPLETO
+==================================================*/
+#modoOscuro{
+
+    padding:12px 25px;
+
+    border:none;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    color:#fff;
+
+    background:linear-gradient(90deg,var(--verde),var(--azul));
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+.barra-botones{
+
+    padding:15px;
+
+    display:flex;
+
+    justify-content:center;
+
+    background:#fff;
+}
+
+.oscuro{
+    background:#0f172a;
+    color:#ffffff;
+}
+
+/* Fondo de todas las secciones */
+body.oscuro .top-bar,
+body.oscuro .header,
+body.oscuro .barra-botones,
+body.oscuro .informacion,
+body.oscuro .servicios-section,
+body.oscuro .galeria-section,
+body.oscuro .equipo,
+body.oscuro .resenas,
+body.oscuro .contacto-section,
+body.oscuro .ubicacion,
+body.oscuro footer{
+    background:#111827;
+}
+
+/* Tarjetas */
+body.oscuro .card,
+body.oscuro .info-card,
+body.oscuro .doctor,
+body.oscuro .comentario,
+body.oscuro form{
+    background:#1f2937;
+    color:#ffffff;
+    box-shadow:0 10px 25px rgba(0,0,0,.5);
+}
+
+/* Títulos */
+body.oscuro h1,
+body.oscuro h2,
+body.oscuro h3,
+body.oscuro h4,
+body.oscuro h5,
+body.oscuro h6{
+    color:#4ade80;
+}
+
+/* Textos */
+body.oscuro p,
+body.oscuro span,
+body.oscuro li,
+body.oscuro label{
+    color:#e5e7eb;
+}
+
+/* Menú */
+body.oscuro nav{
+    background:#111827;
+}
+
+body.oscuro nav a{
+    color:#ffffff;
+}
+
+body.oscuro nav a:hover{
+    color:#4ade80;
+}
+
+/* Logo */
+body.oscuro .logo h1{
+    color:#4ade80;
+}
+
+body.oscuro .logo span{
+    color:#60a5fa;
+}
+
+/* Formularios */
+body.oscuro input,
+body.oscuro textarea,
+body.oscuro select{
+    background:#374151;
+    color:#ffffff;
+    border:1px solid #4b5563;
+}
+
+body.oscuro input::placeholder,
+body.oscuro textarea::placeholder{
+    color:#cbd5e1;
+}
+
+/* Buscador */
+body.oscuro #buscar{
+    background:#374151;
+    color:#ffffff;
+    border:2px solid #60a5fa;
+}
+
+/* Mapa */
+body.oscuro .mapa{
+    box-shadow:0 10px 30px rgba(0,0,0,.6);
+}
+
+/* Footer */
+body.oscuro footer{
+    border-top:2px solid #16a34a;
+}
+
+/* Botones */
+body.oscuro .btn,
+body.oscuro .btnPrincipal,
+body.oscuro #modoOscuro,
+body.oscuro .whatsapp-btn{
+    background:linear-gradient(90deg,#16a34a,#2563eb);
+    color:white;
+}
+
+/* Flecha subir */
+body.oscuro #btnArriba{
+    background:#16a34a;
+}
+
+/* Lightbox */
+body.oscuro #lightbox{
+    background:rgba(0,0,0,.95);
+}
+
+/*=========================================
+SLIDER
+=========================================*/
+
+.inicio{
+
+    position:relative;
+
+    height:550px;
+
+    overflow:hidden;
+
+}
+
+.slider{
+
+    width:100%;
+
+    height:100%;
+
+}
+
+.slide{
+
+    position:absolute;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    opacity:0;
+
+    transition:1s;
+
+}
+
+.slide.active{
+
+    opacity:1;
+
+}
+
+.contenido-slider{
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    text-align:center;
+
+    color:#fff;
+
+    width:90%;
+
+}
+
+.contenido-slider h1{
+
+    font-size:48px;
+
+    margin-bottom:20px;
+
+    text-shadow:3px 3px 10px rgba(0,0,0,.6);
+
+}
+
+.contenido-slider p{
+
+    font-size:18px;
+
+    margin-bottom:30px;
+
+}
+
+.btnPrincipal{
+
+    display:inline-block;
+
+    padding:14px 35px;
+
+    background:linear-gradient(90deg,var(--verde),var(--azul));
+
+    color:#fff;
+
+    text-decoration:none;
+
+    border-radius:30px;
+
+    transition:.3s;
+
+}
+
+.btnPrincipal:hover{
+
+    transform:translateY(-5px);
+
+}
+
+
+/*=========================================
+INFORMACIÓN
+=========================================*/
+
+.informacion{
+
+    padding:70px 0;
+
+    background:#fff;
+
+}
+
+.informacion h2{
+
+    text-align:center;
+
+    color:var(--azul);
+
+    font-size:36px;
+
+    margin-bottom:20px;
+
+}
+
+.descripcion{
+
+    max-width:850px;
+
+    margin:0 auto 40px;
+
+    text-align:center;
+
+    color:var(--gris);
+
+    line-height:28px;
+
+}
+
+/*=========================================
+TARJETAS INFORMACIÓN
+=========================================*/
+
+.info-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+
+}
+
+
+
+.info-card{
+
+    background:#fff;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    box-shadow:var(--sombra);
+
+    transition:.3s;
+
+    border-bottom:5px solid var(--azul);
+
+}
+
+.info-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.info-card i{
+
+    font-size:45px;
+
+    color:var(--verde);
+
+    margin-bottom:15px;
+
+}
+
+.info-card h3{
+
+    color:var(--azul);
+
+    margin-bottom:15px;
+
+}
+
+.info-card p{
+
+    color:#666;
+
+    line-height:26px;
+
+}
+
+/*=========================================
+FRASE
+=========================================*/
+
+.frase{
+
+    background:linear-gradient(135deg,var(--verde),var(--azul));
+
+    color:#fff;
+
+    text-align:center;
+
+    padding:70px 20px;
+
+}
+
+.frase h2{
+
+    font-size:34px;
+
+    margin-bottom:20px;
+
+}
+
+.frase p{
+
+    font-size:18px;
+
+}
+
+/*=========================================
+SERVICIOS
+=========================================*/
+
+.servicios-section{
+
+    padding:70px 0;
+
+    background:#f5f8fc;
+
+}
+
+.servicios-section h2{
+
+    text-align:center;
+
+    color:var(--azul);
+
+    font-size:35px;
+
+    margin-bottom:15px;
+
+}
+
+.contenedor-buscador{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin:35px 0;
+
+}
+
+#buscar{
+
+    width:100%;
+
+    max-width:500px;
+
+    padding:14px 20px;
+
+    border:2px solid var(--azul);
+
+    border-radius:35px;
+
+    outline:none;
+
+    font-size:15px;
+
+}
+
+/*=========================================
+TARJETAS SERVICIOS ORGANIZADAS
+=========================================*/
+
+.servicios{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+
+    align-items:stretch;
+
+}
+
+
+.card{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:var(--sombra);
+
+    transition:.3s;
+
+    display:flex;
+
+    flex-direction:column;
+
+    min-height:520px;
+
+}
+
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+
+
+/* IMAGEN */
+
+.card img{
+
+    width:100%;
+
+    height:210px;
+
+    object-fit:cover;
+
+}
+
+
+
+/* CONTENIDO */
+
+.contenido-card{
+
+    padding:25px 20px;
+
+    text-align:center;
+
+    display:flex;
+
+    flex-direction:column;
+
+    flex:1;
+
+}
+
+
+
+/* ICONO */
+
+.icono{
+
+    font-size:45px;
+
+    color:var(--verde);
+
+    margin:10px 0;
+
+}
+
+
+
+/* TITULO */
+
+.contenido-card h3{
+
+    color:var(--azul);
+
+    margin-bottom:15px;
+
+    font-size:23px;
+
+    min-height:60px;
+
+}
+
+
+
+/* TEXTO */
+
+.contenido-card p{
+
+    color:#666;
+
+    line-height:26px;
+
+    min-height:85px;
+
+}
+
+
+
+/* BOTON */
+
+.btn{
+
+    display:inline-block;
+
+    margin-top:auto;
+
+    padding:13px 25px;
+
+    background:linear-gradient(90deg,var(--verde),var(--azul));
+
+    color:#fff;
+
+    text-decoration:none;
+
+    border-radius:30px;
+
+    transition:.3s;
+
+}
+
+
+.btn:hover{
+
+    transform:scale(1.05);
+
+}
+
+/*=========================================
+GALERÍA
+=========================================*/
+
+.galeria-section{
+
+    padding:70px 0;
+
+    background:#ffffff;
+
+}
+
+.galeria-section h2{
+
+    text-align:center;
+
+    color:var(--azul);
+
+    font-size:35px;
+
+    margin-bottom:15px;
+
+}
+
+.galeria{
+
+    display:flex;
+
+    gap:20px;
+
+    overflow-x:auto;
+
+    padding:10px;
+
+    scroll-behavior:smooth;
+
+}
+
+.galeria::-webkit-scrollbar{
+
+    height:8px;
+
+}
+
+.galeria::-webkit-scrollbar-thumb{
+
+    background:var(--verde);
+
+    border-radius:10px;
+
+}
+
+.animal{
+
+    min-width:250px;
+
+    height:220px;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    box-shadow:var(--sombra);
+
+    cursor:pointer;
+
+}
+
+.animal img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.4s;
+
+}
+
+.animal:hover img{
+
+    transform:scale(1.1);
+
+}
+
+/*=========================================
+NUESTRO EQUIPO
+=========================================*/
+
+.equipo{
+
+    padding:70px 0;
+
+    background:#f5f8fc;
+
+}
+
+.equipo h2{
+
+    text-align:center;
+
+    color:var(--azul);
+
+    font-size:35px;
+
+    margin-bottom:20px;
+
+}
+
+.equipo-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:25px;
+
+}
+
+.doctor{
+
+    background:#fff;
+
+    border-radius:15px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:var(--sombra);
+
+    transition:.3s;
+
+}
+
+.doctor:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.doctor img{
+
+    width:170px;
+
+    height:170px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:5px solid var(--verde);
+
+    margin-bottom:20px;
+
+}
+
+.doctor h3{
+
+    color:var(--azul);
+
+    margin-bottom:8px;
+
+}
+
+.doctor h4{
+
+    color:var(--verde);
+
+    margin-bottom:15px;
+
+}
+
+.doctor p{
+
+    color:#666;
+
+    line-height:26px;
+
+}
+
+/*=========================================
+RESEÑAS
+=========================================*/
+
+.resenas{
+
+    padding:70px 0;
+
+    background:#fff;
+
+}
+
+.resenas h2{
+
+    text-align:center;
+
+    color:var(--azul);
+
+    font-size:35px;
+
+    margin-bottom:20px;
+
+}
+
+.comentarios{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+
+}
+
+.comentario{
+
+    background:#f5f8fc;
+
+    border-radius:15px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:var(--sombra);
+
+    transition:.3s;
+
+}
+
+.comentario:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.comentario p{
+
+    color:#666;
+
+    margin-bottom:20px;
+
+    line-height:28px;
+
+}
+
+.comentario h4{
+
+    color:#f59e0b;
+
+    margin-bottom:10px;
+
+}
+
+.comentario span{
+
+    color:var(--azul);
+
+    font-weight:600;
+
+}
+
+/*=========================================
+CONTACTO
+=========================================*/
+
+.contacto-section{
+
+    padding:70px 0;
+
+    background:#f5f8fc;
+
+}
+
+.contenedor-contacto{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:40px;
+
+}
+
+.info-contacto h2{
+
+    color:var(--azul);
+
+    font-size:34px;
+
+    margin-bottom:20px;
+
+}
+
+.info-contacto p{
+
+    color:#666;
+
+    margin-bottom:25px;
+
+    line-height:28px;
+
+}
+
+.dato-contacto{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:18px;
+
+    font-size:16px;
+
+}
+
+.dato-contacto i{
+
+    color:var(--verde);
+
+    font-size:22px;
+
+}
+
+/*=========================================
+CONTACTO - REDES SOCIALES
+=========================================*/
+
+.redes{
+    display:flex;
+    gap:15px;
+    margin-top:25px;
+}
+
+.redes a{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    color:#fff !important; /* Mantiene los iconos blancos */
+    transition:.3s;
+}
+
+.redes a:hover{
+    transform:translateY(-4px);
+    opacity: 0.9;
+}
+/*=========================================
+ COLORES OFICIALES DE REDES SOCIALES (FONDO)
+=========================================*/
+
+/* Facebook */
+.redes a .fa-facebook-f,
+.redes a[href*="facebook.com"] {
+    background-color: #1877F2 !important;
+}
+
+/* Instagram */
+.redes a .fa-instagram,
+.redes a[href*="instagram.com"] {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+}
+
+/* WhatsApp */
+.redes a .fa-whatsapp,
+.redes a[href*="wa.me"],
+.redes a[href*="whatsapp.com"] {
+    background-color: #25D366 !important;
+}
+
+/* YouTube */
+.redes a .fa-youtube,
+.redes a[href*="youtube.com"] {
+    background-color: #FF0000 !important;
+}
+
+/* TikTok */
+.redes a .fa-tiktok,
+.redes a[href*="tiktok.com"] {
+    background-color: #000000 !important;
+}
+
+/*=========================================
+FORMULARIO
+=========================================*/
+
+form{
+
+    background:#fff;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    box-shadow:var(--sombra);
+
+}
+
+form h2{
+
+    text-align:center;
+
+    color:var(--verde);
+
+    margin-bottom:20px;
+
+}
+
+form input,
+form select,
+form textarea{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-bottom:15px;
+
+    border:1px solid #ccc;
+
+    border-radius:8px;
+
+    outline:none;
+
+    font-size:15px;
+
+}
+
+form textarea{
+
+    resize:none;
+
+    height:140px;
+
+}
+
+/*=========================================
+MAPA
+=========================================*/
+
+.ubicacion{
+
+    padding:70px 0;
+
+    background:#fff;
+
+}
+
+.ubicacion h2{
+
+    text-align:center;
+
+    color:var(--azul);
+
+    font-size:35px;
+
+    margin-bottom:25px;
+
+}
+
+.mapa{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    overflow:hidden;
+
+    border-radius:15px;
+
+    box-shadow:var(--sombra);
+
+}
+
+/*=========================================
+FOOTER
+=========================================*/
+
+footer{
+
+    background:#0f172a;
+
+    color:#fff;
+
+    padding:50px 20px 20px;
+
+}
+
+.footer-contenedor{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:30px;
+
+}
+
+.footer-contenedor h3{
+
+    color:#4ade80;
+
+    margin-bottom:15px;
+
+}
+
+.footer-contenedor p,
+.footer-contenedor li{
+
+    color:#ddd;
+
+    font-size:15px;
+
+    line-height:28px;
+
+}
+
+.footer-contenedor ul{
+
+    list-style:none;
+
+}
+
+footer hr{
+
+    margin:30px auto;
+
+    width:90%;
+
+    border:1px solid rgba(255,255,255,.15);
+
+}
+
+footer .copyright{
+
+    text-align:center;
+
+    color:#bbb;
+
+    font-size:14px;
+
+}
+
+/*=========================================
+LIGHTBOX
+=========================================*/
+
+#lightbox{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,.85);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:99999;
+
+}
+
+#lightbox img{
+
+    width:90%;
+
+    max-width:700px;
+
+    border-radius:15px;
+
+}
+
+#cerrarLightbox{
+
+    position:absolute;
+
+    top:20px;
+
+    right:35px;
+
+    font-size:45px;
+
+    color:#fff;
+
+    cursor:pointer;
+
+}
+/*=========================================
+BOTÓN VOLVER ARRIBA
+=========================================*/
+
+#btnArriba {
+    position: fixed;
+    right: 25px;
+    bottom: 90px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    
+    /* 🎨 CAMBIA LOS COLORES AQUÍ */
+    background-color: var(--verde); /* Color de fondo del botón */
+    color: #ffffff;                 /* Color de la flecha / icono */
+    
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all .3s ease;
+    z-index: 999;
+}
+
+/* Color cuando pasas el cursor por encima (Hover) */
+#btnArriba:hover {
+    background-color: var(--azul); /* Cambia el color de fondo al pasar el mouse */
+    color: #ffffff;                /* Cambia el color del icono si deseas */
+    transform: translateY(-5px);
+}
+
+/*=========================================
+ BOTÓN WHATSAPP DEL FORMULARIO
+=========================================*/
+
+.whatsapp-btn {
+    width: 100%;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+/* Efecto al pasar el mouse (Hover) */
+.whatsapp-btn:hover {
+    background: linear-gradient(135deg, #128C7E, #075E54);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45);
+}
+
+/* Efecto al presionar (Active) */
+.whatsapp-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+}
+
+/* Icono dentro del botón */
+.whatsapp-btn i {
+    font-size: 22px;
+}
+
+/* Compatibilidad Modo Oscuro */
+body.oscuro .whatsapp-btn {
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+}
+
+/*=========================================
+MODO OSCURO
+=========================================*/
+
+body.oscuro{
+
+    background:#111827;
+
+    color:#fff;
+
+}
+
+body.oscuro .header,
+body.oscuro .top-bar,
+body.oscuro .card,
+body.oscuro .info-card,
+body.oscuro .doctor,
+body.oscuro .comentario,
+body.oscuro form,
+body.oscuro footer{
+
+    background:#1f2937;
+
+    color:#fff;
+
+}
+
+body.oscuro nav a,
+body.oscuro p,
+body.oscuro span,
+body.oscuro li,
+body.oscuro h1,
+body.oscuro h2,
+body.oscuro h3,
+body.oscuro h4{
+
+    color:#fff;
+
+}
+
+body.oscuro input,
+body.oscuro textarea,
+body.oscuro select{
+
+    background:#374151;
+
+    color:#fff;
+
+    border:1px solid #555;
+
+}
+
+/*=========================================
+RESPONSIVE
+=========================================*/
+
+@media(max-width:992px){
+
+    .servicios{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+
+
+@media(max-width:576px){
+
+    .servicios{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    #menuBtn{
+
+        display:block;
+
+    }
+
+    nav{
+
+        display:none;
+
+        position:absolute;
+
+        top:80px;
+
+        left:0;
+
+        width:100%;
+
+        background:#fff;
+
+        flex-direction:column;
+
+        text-align:center;
+
+        padding:20px 0;
+
+        box-shadow:var(--sombra);
+
+    }
+
+    nav.activo{
+
+        display:flex;
+
+    }
+
+    .header{
+
+        padding:15px 20px;
+
+    }
+
+    .top-bar{
+
+        justify-content:center;
+
+        gap:10px;
+
+        text-align:center;
+
+    }
+
+    .contenido-slider h1{
+
+        font-size:32px;
+
+    }
+
+    .contenido-slider p{
+
+        font-size:16px;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .servicios{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .info-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .equipo-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .comentarios{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .contenido-slider h1{
+
+        font-size:26px;
+
+    }
+
+    .contenido-slider p{
+
+        font-size:15px;
+
+    }
+
+    .logo h1{
+
+        font-size:22px;
+
+    }
+
+}
+
+/*=========================================
+BOTONES DE PÁGINAS
+=========================================*/
+
+.paginas{
+
+    width:90%;
+    max-width:1200px;
+    margin:40px auto 70px;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+}
+
+.pagina-item{
+
+    display:flex;
+    justify-content:center;
+
+}
+
+.pagina-item .btn{
+
+    width:200px;
+    text-align:center;
+
+}
+
+/*==================================================
+INICIAR SESIÓN Y REGISTRO
+==================================================*/
+
+/* Botones del encabezado */
+
+.auth-buttons{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-left:20px;
+
+}
+
+.btn-login,
+.btn-register{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+
+    padding:11px 20px;
+
+    border-radius:30px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.btn-login{
+
+    color:var(--azul);
+    border:2px solid var(--azul);
+    background:#fff;
+
+}
+
+.btn-login:hover{
+
+    background:var(--azul);
+    color:#fff;
+    transform:translateY(-3px);
+
+}
+
+.btn-register{
+
+    color:#fff;
+    background:linear-gradient(90deg,var(--verde),var(--azul));
+
+}
+
+.btn-register:hover{
+
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+}
+
+/*==================================================
+PÁGINAS LOGIN Y REGISTRO
+==================================================*/
+
+.auth-page{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+    background:linear-gradient(135deg,#16a34a,#2563eb);
+
+}
+
+.auth-box{
+
+    width:100%;
+
+    max-width:450px;
+
+    background:#ffffff;
+
+    padding:40px;
+
+    border-radius:20px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.20);
+
+    text-align:center;
+
+}
+
+.auth-box img{
+
+    width:90px;
+
+    margin-bottom:15px;
+
+}
+
+.auth-box h1{
+
+    color:var(--verde);
+
+    margin-bottom:10px;
+
+}
+
+.auth-box p{
+
+    color:#666;
+
+    margin-bottom:30px;
+
+}
+
+.auth-box input{
+
+    width:100%;
+
+    padding:14px;
+
+    margin-bottom:18px;
+
+    border:1px solid #ccc;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+.auth-box input:focus{
+
+    border-color:var(--azul);
+
+    box-shadow:0 0 10px rgba(37,99,235,.25);
+
+}
+
+.auth-box button{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    color:#fff;
+
+    background:linear-gradient(90deg,var(--verde),var(--azul));
+
+    transition:.3s;
+
+}
+
+.auth-box button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.20);
+
+}
+
+.auth-links{
+
+    margin-top:20px;
+
+}
+
+.auth-links a{
+
+    color:var(--azul);
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+.auth-links a:hover{
+
+    color:var(--verde);
+
+}
+
+/*==================================================
+MODO OSCURO
+==================================================*/
+
+body.oscuro .btn-login{
+
+    background:#1f2937;
+
+    color:#fff;
+
+    border-color:#4ade80;
+
+}
+
+body.oscuro .btn-login:hover{
+
+    background:#4ade80;
+
+    color:#111827;
+
+}
+
+body.oscuro .btn-register{
+
+    background:linear-gradient(90deg,#16a34a,#2563eb);
+
+}
+
+body.oscuro .auth-box{
+
+    background:#1f2937;
+
+}
+
+body.oscuro .auth-box h1{
+
+    color:#4ade80;
+
+}
+
+body.oscuro .auth-box p{
+
+    color:#d1d5db;
+
+}
+
+body.oscuro .auth-box input{
+
+    background:#374151;
+
+    color:#fff;
+
+    border:1px solid #4b5563;
+
+}
+
+body.oscuro .auth-box input::placeholder{
+
+    color:#d1d5db;
+
+}
+
+/*==================================================
+RESPONSIVE
+==================================================*/
+
+@media(max-width:768px){
+
+    .auth-buttons{
+
+        width:100%;
+
+        margin:20px 0 0;
+
+        display:flex;
+
+        flex-direction:column;
+
+        gap:10px;
+
+    }
+
+    .btn-login,
+    .btn-register{
+
+        width:90%;
+
+    }
+
+    .auth-box{
+
+        padding:30px 20px;
+
+    }
+
+}
+
+/*==================================================
+LOGIN Y REGISTRO CON REDES SOCIALES
+==================================================*/
+
+.login-section{
+
+    min-height:80vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:60px 20px;
+    background:linear-gradient(135deg,#f5f8fc,#e8f4ff);
+
+}
+
+.login-box{
+
+    width:100%;
+    max-width:470px;
+    background:#fff;
+    border-radius:20px;
+    padding:40px;
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+    text-align:center;
+
+}
+
+.login-icono{
+
+    font-size:70px;
+    color:var(--verde);
+    margin-bottom:20px;
+
+}
+
+.login-box h2{
+
+    color:var(--azul);
+    margin-bottom:10px;
+
+}
+
+.login-box p{
+
+    color:#666;
+    margin-bottom:25px;
+
+}
+
+.btn-login2{
+
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    background:linear-gradient(90deg,var(--verde),var(--azul));
+    color:#fff;
+    font-size:17px;
+    font-weight:600;
+    transition:.3s;
+
+}
+
+.btn-login2:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.extra{
+
+    margin-top:25px;
+
+}
+
+.extra a{
+
+    color:var(--azul);
+    text-decoration:none;
+    font-weight:600;
+
+}
+
+.extra a:hover{
+
+    color:var(--verde);
+
+}
+/*=========================================
+BOTONES REDES SOCIALES
+=========================================*/
+
+.social-login{
+
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    margin-top:25px;
+
+}
+
+.social-login a{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+
+    padding:14px;
+
+    background:#fff;
+
+    color:#333;
+
+    text-decoration:none;
+
+    border:2px solid #e5e7eb;
+
+    border-radius:15px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.social-login i{
+
+    font-size:22px;
+
+}
+
+/* GOOGLE */
+
+.google i{
+
+    color:#16a516;
+
+}
+
+.google:hover{
+
+    background:#0b7914;
+
+    color:#fff;
+
+    border-color:#0b7914;
+
+    transform:translateY(-4px);
+
+}
+
+.google:hover i{
+
+    color:#fff;
+
+}
+
+/* FACEBOOK */
+
+.facebook i{
+
+    color:#1877F2;
+
+}
+
+.facebook:hover{
+
+    background:#1877F2;
+
+    color:#fff;
+
+    border-color:#1877F2;
+
+    transform:translateY(-4px);
+
+}
+
+.facebook:hover i{
+
+    color:#fff;
+
+}
+
+/*=========================================
+MODO OSCURO
+=========================================*/
+
+body.oscuro .login-box{
+
+    background:#1f2937;
+
+}
+
+body.oscuro .login-box p{
+
+    color:#ddd;
+
+}
+
+body.oscuro .divisor{
+
+    color:#ddd;
+
+}
+
+body.oscuro .divisor::before,
+body.oscuro .divisor::after{
+
+    background:#555;
+
+}
+
+.usuario-logueado{
+
+background:#16a34a;
+
+color:white;
+
+padding:8px 15px;
+
+border-radius:20px;
+
+font-weight:600;
+
+margin-right:10px;
+
+display:flex;
+
+align-items:center;
+
+}

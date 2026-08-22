@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Usuarios | Family Pet</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7f6;
+            padding: 30px;
+        }
+
+        .contenedor {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #16a34a;
+        }
+
+        .formulario {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.1);
+            margin-bottom: 30px;
+        }
+
+        .fila {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .campo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 11px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 11px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #guardar {
+            background: #16a34a;
+            color: white;
+        }
+
+        #modificar {
+            background: #2563eb;
+            color: white;
+        }
+
+        #eliminar {
+            background: #dc2626;
+            color: white;
+        }
+
+        #limpiar {
+            background: #6b7280;
+            color: white;
+        }
+
+        .tabla-contenedor {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            overflow-x: auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background: #16a34a;
+            color: white;
+        }
+
+        tr:hover {
+            background: #f0fdf4;
+        }
+
+        .seleccionar {
+            background: #2563eb;
+            color: white;
+            padding: 7px 12px;
+        }
+
+        #mensaje {
+            text-align: center;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        @media (max-width: 700px) {
+
+            .fila {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                padding: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="contenedor">
+
+    <h1>🐾 Gestión de Usuarios - Family Pet</h1>
+
+    <div class="formulario">
+
+        <input type="hidden" id="id">
+
+        <div class="fila">
+
+            <div class="campo">
+                <label>Nombre</label>
+                <input type="text" id="nombre">
+            </div>
+
+            <div class="campo">
+                <label>Apellido</label>
+                <input type="text" id="apellido">
+            </div>
+
+            <div class="campo">
+                <label>Usuario</label>
+                <input type="text" id="usuario">
+            </div>
+
+            <div class="campo">
+                <label>Correo</label>
+                <input type="email" id="correo">
+            </div>
+
+            <div class="campo">
+                <label>Teléfono</label>
+                <input type="text" id="telefono">
+            </div>
+
+            <div class="campo">
+                <label>Contraseña</label>
+                <input type="password" id="contrasena">
+            </div>
+
+        </div>
+
+        <div class="botones">
+
+            <button id="guardar">
+                Guardar
+            </button>
+
+            <button id="modificar">
+                Modificar
+            </button>
+
+            <button id="eliminar">
+                Eliminar
+            </button>
+
+            <button id="limpiar">
+                Limpiar
+            </button>
+
+        </div>
+
+        <div id="mensaje"></div>
+
+    </div>
+
+    <div class="tabla-contenedor">
+
+        <h2>Usuarios registrados</h2>
+
+        <br>
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Usuario</th>
+                    <th>Correo</th>
+                    <th>Teléfono</th>
+                    <th>Acción</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="tablaUsuarios"></tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script>
+
+const API = "/usuarios";
+
+// =====================================
+// ELEMENTOS
+// =====================================
+
+const id = document.getElementById("id");
+const nombre = document.getElementById("nombre");
+const apellido = document.getElementById("apellido");
+const usuario = document.getElementById("usuario");
+const correo = document.getElementById("correo");
+const telefono = document.getElementById("telefono");
+const contrasena = document.getElementById("contrasena");
+
+const tablaUsuarios = document.getElementById("tablaUsuarios");
+const mensaje = document.getElementById("mensaje");
+
+// =====================================
+// MOSTRAR MENSAJE
+// =====================================
+
+function mostrarMensaje(texto, error = false) {
+
+    mensaje.textContent = texto;
+
+    mensaje.style.color = error
+        ? "#dc2626"
+        : "#16a34a";
+
+    setTimeout(() => {
+
+        mensaje.textContent = "";
+
+    }, 3000);
+
+}
+
+// =====================================
+// CARGAR USUARIOS
+// =====================================
+
+async function cargarUsuarios() {
+
+    try {
+
+        const respuesta = await fetch(API);
+
+        const usuarios = await respuesta.json();
+
+        tablaUsuarios.innerHTML = "";
+
+        usuarios.forEach(usuarioData => {
+
+            const fila = document.createElement("tr");
+
+            fila.innerHTML = `
+
+                <td>${usuarioData.id}</td>
+
+                <td>${usuarioData.nombre}</td>
+
+                <td>${usuarioData.apellido}</td>
+
+                <td>${usuarioData.usuario}</td>
+
+                <td>${usuarioData.correo}</td>
+
+                <td>${usuarioData.telefono || ""}</td>
+
+                <td>
+                    <button
+                        class="seleccionar"
+                        onclick="seleccionarUsuario(${usuarioData.id})">
+                        Seleccionar
+                    </button>
+                </td>
+
+            `;
+
+            tablaUsuarios.appendChild(fila);
+
+        });
+
+    } catch (error) {
+
+        mostrarMensaje(
+            "No se pudieron cargar los usuarios",
+            true
+        );
+
+        console.error(error);
+    }
+}
+
+// =====================================
+// SELECCIONAR USUARIO
+// =====================================
+
+async function seleccionarUsuario(usuarioId) {
+
+    try {
+
+        const respuesta =
+            await fetch(`${API}/${usuarioId}`);
+
+        const usuarioData =
+            await respuesta.json();
+
+        if (!respuesta.ok) {
+
+            mostrarMensaje(
+                usuarioData.error || "Usuario no encontrado",
+                true
+            );
+
+            return;
+        }
+
+        id.value = usuarioData.id;
+        nombre.value = usuarioData.nombre;
+        apellido.value = usuarioData.apellido;
+        usuario.value = usuarioData.usuario;
+        correo.value = usuarioData.correo;
+        telefono.value = usuarioData.telefono || "";
+
+        contrasena.value = "";
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        mostrarMensaje(
+            "Error al seleccionar usuario",
+            true
+        );
+    }
+}
+
+// =====================================
+// GUARDAR
+// =====================================
+
+document.getElementById("guardar")
+.addEventListener("click", async () => {
+
+    if (
+        !nombre.value ||
+        !apellido.value ||
+        !usuario.value ||
+        !correo.value ||
+        !contrasena.value
+    ) {
+
+        mostrarMensaje(
+            "Completa los campos obligatorios",
+            true
+        );
+
+        return;
+    }
+
+    try {
+
+        const respuesta = await fetch(API, {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+
+                nombre: nombre.value,
+                apellido: apellido.value,
+                usuario: usuario.value,
+                correo: correo.value,
+                telefono: telefono.value,
+                contrasena: contrasena.value
+
+            })
+
+        });
+
+        const resultado = await respuesta.json();
+
+        if (!respuesta.ok) {
+
+            mostrarMensaje(
+                resultado.error || "Error al guardar",
+                true
+            );
+
+            return;
+        }
+
+        mostrarMensaje(
+            "Usuario guardado correctamente"
+        );
+
+        limpiar();
+
+        cargarUsuarios();
+
+    } catch (error) {
+
+        console.error(error);
+
+        mostrarMensaje(
+            "Error de conexión con el servidor",
+            true
+        );
+    }
+
+});
+
+// =====================================
+// MODIFICAR
+// =====================================
+
+document.getElementById("modificar")
+.addEventListener("click", async () => {
+
+    if (!id.value) {
+
+        mostrarMensaje(
+            "Selecciona primero un usuario",
+            true
+        );
+
+        return;
+    }
+
+    try {
+
+        const respuesta = await fetch(
+            `${API}/${id.value}`,
+            {
+
+                method: "PUT",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+
+                    nombre: nombre.value,
+                    apellido: apellido.value,
+                    usuario: usuario.value,
+                    correo: correo.value,
+                    telefono: telefono.value
+
+                })
+
+            }
+        );
+
+        const resultado = await respuesta.json();
+
+        if (!respuesta.ok) {
+
+            mostrarMensaje(
+                resultado.error || "Error al modificar",
+                true
+            );
+
+            return;
+        }
+
+        mostrarMensaje(
+            "Usuario modificado correctamente"
+        );
+
+        limpiar();
+
+        cargarUsuarios();
+
+    } catch (error) {
+
+        console.error(error);
+
+        mostrarMensaje(
+            "Error de conexión con el servidor",
+            true
+        );
+    }
+
+});
+
+// =====================================
+// ELIMINAR
+// =====================================
+
+document.getElementById("eliminar")
+.addEventListener("click", async () => {
+
+    if (!id.value) {
+
+        mostrarMensaje(
+            "Selecciona primero un usuario",
+            true
+        );
+
+        return;
+    }
+
+    const confirmar = confirm(
+        "¿Seguro que deseas eliminar este usuario?"
+    );
+
+    if (!confirmar) {
+        return;
+    }
+
+    try {
+
+        const respuesta = await fetch(
+            `${API}/${id.value}`,
+            {
+                method: "DELETE"
+            }
+        );
+
+        const resultado = await respuesta.json();
+
+        if (!respuesta.ok) {
+
+            mostrarMensaje(
+                resultado.error || "Error al eliminar",
+                true
+            );
+
+            return;
+        }
+
+        mostrarMensaje(
+            "Usuario eliminado correctamente"
+        );
+
+        limpiar();
+
+        cargarUsuarios();
+
+    } catch (error) {
+
+        console.error(error);
+
+        mostrarMensaje(
+            "Error de conexión con el servidor",
+            true
+        );
+    }
+
+});
+
+// =====================================
+// LIMPIAR
+// =====================================
+
+document.getElementById("limpiar")
+.addEventListener("click", limpiar);
+
+function limpiar() {
+
+    id.value = "";
+    nombre.value = "";
+    apellido.value = "";
+    usuario.value = "";
+    correo.value = "";
+    telefono.value = "";
+    contrasena.value = "";
+
+}
+
+// =====================================
+// CARGAR AL ABRIR
+// =====================================
+
+cargarUsuarios();
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Iniciar Sesión | Family Pet</title>
+
+<link rel="stylesheet" href="estilos.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+
+<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
+alt="Family Pet">
+
+<div>
+<h1>Family Pet</h1>
+<span>Dando una Segunda Oportunidad</span>
+</div>
+
+</div>
+
+</header>
+
+<section class="login-section">
+
+<div class="login-card">
+
+<i class="fa-solid fa-user-circle icon-login"></i>
+
+<h2>Iniciar Sesión</h2>
+
+<p>Ingresa a tu cuenta de Family Pet</p>
+
+<form id="loginForm">
+
+<label>Correo electrónico</label>
+
+<div class="input-box">
+
+<i class="fa-solid fa-envelope"></i>
+
+<input 
+type="email"
+id="correo"
+placeholder="Correo electrónico"
+required>
+
+</div>
+
+<label>Contraseña</label>
+
+<div class="input-box">
+
+<i class="fa-solid fa-lock"></i>
+
+<input
+type="password"
+id="password"
+placeholder="Contraseña"
+required>
+
+</div>
+
+<button type="submit" class="btn">
+
+<i class="fa-solid fa-right-to-bracket"></i>
+
+Ingresar
+
+</button>
+
+<p id="mensaje"></p>
+
+</form>
+
+<div class="registro-link">
+
+¿No tienes cuenta?
+
+<a href="registro.html">
+Registrarse
+</a>
+
+</div>
+
+<a href="family_pet.html" class="volver">
+← Volver al inicio
+</a>
+
+</div>
+
+</section>
+
+<script>
+
+const formulario = document.getElementById("loginForm");
+
+formulario.addEventListener("submit", async(e)=>{
+
+e.preventDefault();
+
+const correo=document.getElementById("correo").value;
+
+const password=document.getElementById("password").value;
+
+const mensaje=document.getElementById("mensaje");
+
+try{
+
+const respuesta = await fetch(
+"http://localhost:3000/api/login",
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+correo,
+password
+})
+
+});
+
+const datos = await respuesta.json();
+
+if(respuesta.ok){
+
+localStorage.setItem(
+"usuario",
+JSON.stringify(datos.usuario)
+);
+
+mensaje.style.color="green";
+
+mensaje.innerHTML="✅ Inicio de sesión correcto";
+
+setTimeout(()=>{
+
+window.location.href="family_pet.html";
+
+},1000);
+
+}else{
+
+mensaje.style.color="red";
+
+mensaje.innerHTML="❌ "+datos.mensaje;
+
+}
+
+}catch(error){
+
+mensaje.style.color="red";
+
+mensaje.innerHTML=
+"❌ Error al conectar con el servidor";
+
+console.log(error);
+
+}
+
+});
+
+</script>
+
+</body>
+
+</html>

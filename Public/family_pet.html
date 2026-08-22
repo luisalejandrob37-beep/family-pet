@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Family Pet</title>
+
+    <link rel="stylesheet"
+          href="estilos.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header>
+
+    <!-- =================================
+         BARRA SUPERIOR
+    ================================== -->
+
+    <div class="top-bar">
+
+        <div>
+
+            <i class="fa-solid fa-phone"></i>
+
+            <span>
+                +57 315 067 2371
+            </span>
+
+        </div>
+
+        <div>
+
+            <i class="fa-solid fa-envelope"></i>
+
+            <span>
+                dandounasegundaoportunidad@gmail.com
+            </span>
+
+        </div>
+
+        <!-- =============================
+             LOGIN / USUARIO
+        ============================== -->
+
+        <div class="ubicacion-login">
+
+            <!-- USUARIO LOGUEADO -->
+
+            <span id="usuarioNombre"
+                  style="display:none;">
+
+                👤 Hola, Usuario
+
+            </span>
+
+            <!-- INICIAR SESIÓN -->
+
+            <a href="login.html"
+               class="btn-login"
+               id="btnLogin">
+
+                <i class="fa-solid fa-right-to-bracket"></i>
+
+                Iniciar Sesión
+
+            </a>
+
+            <!-- REGISTRARSE -->
+
+            <a href="registro.html"
+               class="btn-register"
+               id="btnRegistro">
+
+                <i class="fa-solid fa-user-plus"></i>
+
+                Registrarse
+
+            </a>
+
+            <!-- CERRAR SESIÓN -->
+
+            <a href="#"
+               class="btn-login"
+               id="btnCerrarSesion"
+               style="display:none;"
+               onclick="cerrarSesion(); return false;">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Cerrar Sesión
+
+            </a>
+
+            <!-- UBICACIÓN -->
+
+            <i class="fa-solid fa-location-dot"></i>
+
+            <span>
+                Colombia
+            </span>
+
+
+        </div>
+
+    </div>
+
+    <!-- =================================
+         HEADER PRINCIPAL
+    ================================== -->
+
+    <div class="header">
+
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
+                 alt="Family Pet">
+
+            <div>
+
+                <h1>
+                    Family Pet
+                </h1>
+
+                <span>
+                    Dando una Segunda Oportunidad
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- BOTÓN MENÚ MÓVIL -->
+
+        <button id="menuBtn">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+        <!-- =================================
+             MENÚ PRINCIPAL
+        ================================== -->
+
+        <nav id="menu">
+
+            <a href="#inicio">
+                Inicio
+            </a>
+
+            <a href="#informacion">
+                Información
+            </a>
+
+            <a href="#servicios">
+                Servicios
+            </a>
+
+            <a href="#galeria">
+                Galería
+            </a>
+
+            <a href="#equipo">
+                Equipo
+            </a>
+
+            <a href="#contacto">
+                Contacto
+            </a>
+
+            <!-- =================================
+                 ADMINISTRACIÓN DE USUARIOS
+
+                 SOLO APARECE SI HAY SESIÓN
+            ================================== -->
+
+            <a href="usuarios.html"
+               id="linkUsuarios"
+               style="display:none;">
+
+                👥 Usuarios
+
+            </a>
+
+        </nav>
+
+        <!-- MODO OSCURO -->
+
+        <button id="modoOscuro">
+
+            🌙 Modo Oscuro
+
+        </button>
+
+    </div>
+
+</header>
+
+<!-- =====================================
+     INICIO / SLIDER
+===================================== -->
+
+<section id="inicio"
+         class="inicio">
+
+    <div class="slider">
+
+        <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b"
+             class="slide active"
+             alt="Mascota rescatada">
+
+        <img src="https://images.unsplash.com/photo-1625481725747-76e4aa13da46?fm=jpg&q=60&w=3000&auto=format&fit=crop"
+             class="slide"
+             alt="Mascota rescatada">
+
+        <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131"
+             class="slide"
+             alt="Mascota rescatada">
+
+        <img src="https://media.istockphoto.com/id/851561812/es/foto/husky-cachorro-en-un-bosque-salvaje.jpg?s=612x612&w=0&k=20&c=YzuPpjnApQBZ0Yz4RR-twQWaQzrANW6GGIZD8LSSfwA="
+             class="slide"
+             alt="Mascota rescatada">
+
+    </div>
+
+    <div class="contenido-slider">
+
+        <h1>
+            Dando una Segunda Oportunidad
+        </h1>
+
+        <p>
+
+            Rescatamos, protegemos y encontramos
+            hogares responsables para nuestras mascotas.
+
+        </p>
+
+        <a href="#servicios"
+           class="btnPrincipal">
+
+            Ver Servicios
+
+        </a>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     INFORMACIÓN
+===================================== -->
+
+<section id="informacion">
+
+    <div class="contenedor">
+
+        <h2>
+            ¿Quiénes Somos?
+        </h2>
+
+        <p class="descripcion">
+
+            Family Pet es una organización dedicada
+            al rescate, atención veterinaria y adopción
+            responsable de mascotas.
+
+        </p>
+
+        <div class="info-grid">
+
+            <div class="info-card">
+
+                <i class="fa-solid fa-heart"></i>
+
+                <h3>
+                    Misión
+                </h3>
+
+                <p>
+
+                    Brindar bienestar y protección a perros
+                    y gatos mediante atención veterinaria
+                    y adopción responsable.
+
+                </p>
+
+            </div>
+
+            <div class="info-card">
+
+                <i class="fa-solid fa-eye"></i>
+
+                <h3>
+                    Visión
+                </h3>
+
+                <p>
+
+                    Ser un referente nacional en el cuidado
+                    y rescate animal.
+
+                </p>
+
+            </div>
+
+            <div class="info-card">
+
+                <i class="fa-solid fa-hand-holding-heart"></i>
+
+                <h3>
+                    Valores
+                </h3>
+
+                <p>
+
+                    Amor, respeto, compromiso y responsabilidad
+                    con cada mascota.
+
+                </p>
+
+            </div>
+
+            <div class="info-card">
+
+                <i class="fa-solid fa-shield-dog"></i>
+
+                <h3>
+                    Objetivos
+                </h3>
+
+                <p>
+
+                    Promover la salud, protección y adopción
+                    responsable.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     BOTONES INFORMACIÓN
+===================================== -->
+
+<section class="paginas">
+
+    <div class="pagina-item">
+
+        <a href="compromiso.html"
+           class="btn">
+
+            Compromiso
+
+        </a>
+
+    </div>
+
+    <div class="pagina-item">
+
+        <a href="seguridad.html"
+           class="btn">
+
+            Seguridad
+
+        </a>
+
+    </div>
+
+    <div class="pagina-item">
+
+        <a href="adopcion.html"
+           class="btn">
+
+            Adopción
+
+        </a>
+
+    </div>
+
+    <div class="pagina-item">
+
+        <a href="profesionales.html"
+           class="btn">
+
+            Profesionales
+
+        </a>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     FRASE
+===================================== -->
+
+<section>
+
+    <div class="contenedor">
+
+        <h2>
+
+            ❤️ "Ellos no necesitan una vida perfecta,
+            solo una familia que los ame."
+
+        </h2>
+
+        <p>
+
+            Cada mascota merece una segunda oportunidad.
+            Adopta y cambia una historia.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     SERVICIOS
+===================================== -->
+
+<section id="servicios">
+
+    <div class="contenedor">
+
+        <h2>
+            🐾 Nuestros Servicios
+        </h2>
+
+        <p class="descripcion">
+
+            Brindamos servicios veterinarios de calidad
+            para el bienestar y cuidado de tu mascota.
+
+        </p>
+
+        <!-- BUSCADOR -->
+
+        <div class="contenedor-buscador">
+
+
+            <input
+                type="text"
+                id="buscar"
+                placeholder="🔍 Buscar servicio...">
+
+        </div>
+
+        <div class="servicios">
+
+            <!-- CONSULTAS -->
+
+            <div class="card">
+
+                <img
+                    src="https://www.prensalibre.com/wp-content/uploads/2024/06/01-NOTA-WEB-I.jpg?quality=52"
+                    alt="Consulta Veterinaria">
+
+                <div class="contenido-card">
+
+                    <i class="fa-solid fa-stethoscope icono"></i>
+
+                    <h3>
+                        Consultas Veterinarias
+                    </h3>
+
+                    <p>
+
+                        Atención médica general y especializada
+                        para perros y gatos.
+
+                    </p>
+
+                    <a href="#"
+                       class="btn"
+                       onclick="accederServicio('consulta.html'); return false;">
+
+                        🩺 Solicitar Consulta
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- VACUNACIÓN -->
+
+            <div class="card">
+
+                <img
+                    src="https://mx.virbac.com/files/live/sites/virbac-mx/files/mexico%20correctas/imagenes%20de%20acoma%C3%B1amiento/Es_necesario_vacunar_perros_y_gatos_1.png"
+                    alt="Vacunación">
+
+                <div class="contenido-card">
+
+                    <i class="fa-solid fa-syringe icono"></i>
+
+                    <h3>
+                        Vacunación
+                    </h3>
+
+                    <p>
+
+                        Aplicación de vacunas y controles
+                        preventivos para todas las mascotas.
+
+                    </p>
+
+                    <a href="#"
+                       class="btn"
+                       onclick="accederServicio('vacunacion.html'); return false;">
+
+                        💉 Solicitar Vacuna
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CIRUGÍAS -->
+
+            <div class="card">
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1kVBeDKU-ZNjPHbKcCQT5faRVqonf-A02h-6xIdcMRw&s=10"
+                    alt="Cirugía">
+
+                <div class="contenido-card">
+
+                    <i class="fa-solid fa-user-doctor icono"></i>
+
+                    <h3>
+                        Cirugías
+                    </h3>
+
+                    <p>
+
+                        Procedimientos quirúrgicos realizados
+                        por profesionales especializados.
+
+                    </p>
+
+                    <a href="#"
+                       class="btn"
+                       onclick="accederServicio('cirugias.html'); return false;">
+
+                        🏥 Solicitar Cirugía
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- ADOPCIÓN -->
+
+            <div class="card">
+
+                <img
+                    src="familia.jpeg"
+                    alt="Adopción">
+
+                <div class="contenido-card">
+
+                    <i class="fa-solid fa-heart icono"></i>
+
+                    <h3>
+                        Adopción
+                    </h3>
+
+                    <p>
+
+                        Ayudamos a encontrar un hogar responsable
+                        para cada mascota.
+
+                    </p>
+
+                    <a href="#"
+                       class="btn"
+                       onclick="accederServicio('adopciones.html'); return false;">
+
+                        ❤️ Adoptar
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     GALERÍA
+===================================== -->
+
+<section id="galeria">
+
+    <div class="contenedor">
+
+        <h2>
+            📸 Galería
+        </h2>
+
+        <p class="descripcion">
+
+            Conoce algunas de las mascotas que han
+            encontrado un hogar gracias a Family Pet.
+
+        </p>
+
+        <div class="galeria">
+
+            <div class="animal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b"
+                    alt="Perro">
+
+            </div>
+
+            <div class="animal">
+
+                <img
+                    src="https://dinastiacachorros.com.co/wp-content/uploads/2026/01/Img-Dinastia-del-Cachorro-Raza-Individual-Home-Dalmata-en-Colombia.png"
+                    alt="Perro">
+
+            </div>
+
+            <div class="animal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131"
+                    alt="Gato">
+
+            </div>
+
+            <div class="animal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1574158622682-e40e69881006"
+                    alt="Gato">
+
+            </div>
+
+            <div class="animal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1558788353-f76d92427f16"
+                    alt="Mascota">
+
+            </div>
+
+            <div class="animal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1548681528-6a5c45b66b42"
+                    alt="Mascota">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     EQUIPO
+===================================== -->
+
+<section id="equipo">
+
+    <div class="contenedor">
+
+        <h2>
+            👨‍⚕️ Nuestro Equipo
+        </h2>
+
+        <p class="descripcion">
+
+            Profesionales comprometidos con el bienestar
+            y la salud de cada mascota.
+
+        </p>
+
+        <div class="equipo-grid">
+
+            <div class="doctor">
+
+                <img
+                    src="https://randomuser.me/api/portraits/women/44.jpg"
+                    alt="Veterinaria">
+
+                <h3>
+                    Dra. Laura Gómez
+                </h3>
+
+                <h4>
+                    Médica Veterinaria
+                </h4>
+
+                <p>
+
+                    Especialista en medicina preventiva
+                    y atención clínica.
+
+                </p>
+
+            </div>
+
+            <div class="doctor">
+
+                <img
+                    src="https://randomuser.me/api/portraits/men/32.jpg"
+                    alt="Veterinario">
+
+                <h3>
+                    Dr. Carlos Pérez
+                </h3>
+
+                <h4>
+                    Cirujano Veterinario
+                </h4>
+
+                <p>
+
+                    Especialista en procedimientos quirúrgicos
+                    y recuperación.
+
+                </p>
+
+            </div>
+
+            <div class="doctor">
+
+                <img
+                    src="https://randomuser.me/api/portraits/women/68.jpg"
+                    alt="Veterinaria">
+
+                <h3>
+                    Dra. Andrea Ruiz
+                </h3>
+
+                <h4>
+                    Vacunación Preventiva
+                </h4>
+
+                <p>
+
+                    Encargada de campañas de vacunación
+                    y control sanitario.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     OPINIONES
+===================================== -->
+
+<section>
+
+    <div class="contenedor">
+
+        <h2>
+            ⭐ Opiniones de Nuestros Clientes
+        </h2>
+
+        <p class="descripcion">
+
+            La satisfacción de nuestros clientes
+            es nuestro mayor compromiso.
+
+        </p>
+
+        <div class="comentarios">
+
+            <div class="comentario">
+
+                <p>
+
+                    "Excelente atención. Gracias a Family Pet
+                    pude adoptar a mi mejor amigo."
+
+                </p>
+
+                <h4>
+                    ⭐⭐⭐⭐⭐
+                </h4>
+
+                <span>
+                    María González
+                </span>
+
+            </div>
+
+            <div class="comentario">
+
+                <p>
+
+                    "Los veterinarios son muy profesionales
+                    y atendieron a mi mascota con mucho cariño."
+
+                </p>
+
+                <h4>
+                    ⭐⭐⭐⭐⭐
+                </h4>
+
+                <span>
+                    Carlos Ramírez
+                </span>
+
+            </div>
+
+            <div class="comentario">
+
+                <p>
+
+                    "Muy buena experiencia. Recomiendo
+                    totalmente los servicios de Family Pet."
+
+                </p>
+
+                <h4>
+                    ⭐⭐⭐⭐⭐
+                </h4>
+
+                <span>
+                    Laura Martínez
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     CONTACTO
+===================================== -->
+
+<section id="contacto">
+
+    <div class="contenedor-contacto">
+
+        <div class="info-contacto">
+
+            <h2>
+                📩 Contáctanos
+            </h2>
+
+            <p>
+
+                Si deseas más información sobre nuestros
+                servicios, adoptar una mascota o agendar
+                una consulta veterinaria, estaremos felices
+                de atenderte.
+
+            </p>
+
+            <div class="dato-contacto">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <span>
+                    Colombia
+                </span>
+
+            </div>
+
+            <div class="dato-contacto">
+
+                <i class="fa-solid fa-phone"></i>
+
+                <span>
+                    +57 315 067 2371
+                </span>
+
+            </div>
+
+            <div class="dato-contacto">
+
+                <i class="fa-solid fa-envelope"></i>
+
+                <span>
+                    dandounasegundaoportunidad@gmail.com
+                </span>
+
+            </div>
+
+
+            <div class="redes">
+
+                <a
+                    href="https://www.facebook.com/share/196F4CFHtb/"
+                    target="_blank">
+
+                    <i class="fab fa-facebook-f"></i>
+
+                </a>
+
+                <a
+                    href="https://www.instagram.com/familypet437?igsh=MW5wc25wNDV1ZGo0eg=="
+                    target="_blank">
+
+                    <i class="fab fa-instagram"></i>
+
+                </a>
+
+                <a
+                    href="https://wa.me/573150672371"
+                    target="_blank">
+
+                    <i class="fab fa-whatsapp"></i>
+
+                </a>
+
+                <a
+                    href="https://youtube.com/@familypet-u6v?si=UlQDVQMiz_7YK6dj"
+                    target="_blank">
+
+                    <i class="fab fa-youtube"></i>
+
+                </a>
+
+                <a
+                    href="https://www.tiktok.com/@family.pet38"
+                    target="_blank">
+
+                    <i class="fab fa-tiktok"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- =================================
+             FORMULARIO CONTACTO
+        ================================== -->
+
+        <form id="contactoForm">
+
+            <h2>
+                Enviar Mensaje
+            </h2>
+
+            <input
+                type="text"
+                id="nombre"
+                placeholder="Nombre completo"
+                required>
+
+            <input
+                type="email"
+                id="correo"
+                placeholder="Correo electrónico"
+                required>
+
+            <input
+                type="tel"
+                id="telefono"
+                placeholder="Número de teléfono"
+                required>
+
+            <select
+                id="asunto"
+                required>
+
+                <option value="">
+                    Seleccione un asunto
+                </option>
+
+                <option>
+                    Consulta Veterinaria
+                </option>
+
+                <option>
+                    Vacunación
+                </option>
+
+                <option>
+                    Cirugía
+                </option>
+
+                <option>
+                    Adopción
+                </option>
+
+            </select>
+
+            <textarea
+                id="mensaje"
+                rows="5"
+                placeholder="Escriba su mensaje..."
+                required></textarea>
+
+            <button
+                type="submit"
+                class="whatsapp-btn">
+
+                📱 Enviar a WhatsApp
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     UBICACIÓN
+===================================== -->
+
+<section>
+
+    <div class="contenedor">
+
+        <h2>
+            📍 Nuestra Ubicación
+        </h2>
+
+        <div class="mapa">
+
+            <iframe
+
+                src="https://www.google.com/maps?q=Colombia&output=embed"
+
+                width="100%"
+
+                height="350"
+
+                style="border:0;"
+
+                loading="lazy"
+
+                allowfullscreen>
+
+            </iframe>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<footer>
+
+    <div class="footer-contenedor">
+
+        <div>
+
+            <h3>
+                🐾 Family Pet
+            </h3>
+
+            <p>
+
+                Dando una Segunda Oportunidad
+                a miles de mascotas.
+
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3>
+                Servicios
+            </h3>
+
+            <ul>
+
+                <li>
+                    Consultas Veterinarias
+                </li>
+
+                <li>
+                    Vacunación
+                </li>
+
+                <li>
+                    Cirugías
+                </li>
+
+                <li>
+                    Adopción
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div>
+
+            <h3>
+                Contacto
+            </h3>
+
+            <p>
+                📞 +57 315 067 2371
+            </p>
+
+
+            <p>
+                📧 dandounasegundaoportunidad@gmail.com
+            </p>
+
+            <p>
+                📍 Colombia
+            </p>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <p class="copyright">
+
+        © <span id="anio">2026</span>
+        Family Pet | Todos los derechos reservados.
+
+    </p>
+
+</footer>
+
+<!-- =====================================
+     LIGHTBOX
+===================================== -->
+
+<div id="lightbox"
+     class="lightbox">
+
+    <span id="cerrarLightbox"
+          class="cerrarLightbox">
+
+        &times;
+
+    </span>
+
+    <img
+        id="imagenLightbox"
+        src=""
+        alt="Imagen ampliada">
+
+</div>
+
+<!-- =====================================
+     BOTÓN SUBIR
+===================================== -->
+
+<button
+    id="btnSubir"
+    class="btnSubir">
+
+    <i class="fa-solid fa-arrow-up-long"></i>
+
+</button>
+
+<script>
+
+// =====================================
+// MOSTRAR USUARIO LOGUEADO
+// =====================================
+
+const usuarioGuardado =
+    localStorage.getItem("usuario");
+
+if (usuarioGuardado) {
+
+    try {
+
+        const usuario =
+            JSON.parse(usuarioGuardado);
+
+        // ==============================
+        // MOSTRAR NOMBRE
+        // ==============================
+
+        const usuarioNombre =
+            document.getElementById("usuarioNombre");
+
+        usuarioNombre.style.display = "inline";
+
+        usuarioNombre.innerHTML =
+            "👤 Hola, " +
+            (usuario.nombre || "Usuario");
+
+        // ==============================
+        // OCULTAR LOGIN Y REGISTRO
+        // ==============================
+
+        document.getElementById(
+            "btnLogin"
+        ).style.display = "none";
+
+        document.getElementById(
+            "btnRegistro"
+        ).style.display = "none";
+
+        // ==============================
+        // MOSTRAR CERRAR SESIÓN
+        // ==============================
+
+        document.getElementById(
+            "btnCerrarSesion"
+        ).style.display = "inline";
+
+        // ==============================
+        // MOSTRAR USUARIOS
+        // ==============================
+
+        const linkUsuarios =
+            document.getElementById(
+                "linkUsuarios"
+            );
+
+        if (linkUsuarios) {
+
+            linkUsuarios.style.display =
+                "inline-block";
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Error al leer usuario:",
+            error
+        );
+
+        localStorage.removeItem("usuario");
+
+    }
+
+}
+
+// =====================================
+// CERRAR SESIÓN
+// =====================================
+
+function cerrarSesion() {
+
+    localStorage.removeItem("usuario");
+
+    window.location.reload();
+
+}
+
+// =====================================
+// MODO OSCURO
+// =====================================
+
+const modo =
+    document.getElementById("modoOscuro");
+
+if (modo) {
+
+    modo.addEventListener(
+        "click",
+        () => {
+
+            document.body.classList.toggle(
+                "oscuro"
+            );
+
+            if (
+                document.body.classList.contains(
+                    "oscuro"
+                )
+            ) {
+
+                modo.innerHTML =
+                    "☀️ Modo Claro";
+
+            } else {
+
+                modo.innerHTML =
+                    "🌙 Modo Oscuro";
+
+            }
+
+        }
+    );
+
+}
+
+// =====================================
+// ACCESO A SERVICIOS
+// =====================================
+
+function accederServicio(pagina) {
+
+    if (
+        localStorage.getItem("usuario")
+    ) {
+
+        window.location.href =
+            pagina;
+
+    } else {
+
+        alert(
+            "Debes iniciar sesión para acceder a los servicios."
+        );
+
+        window.location.href =
+            "login.html";
+
+    }
+
+}
+
+// =====================================
+// SLIDER
+// =====================================
+
+let slides =
+    document.querySelectorAll(
+        ".slide"
+    );
+
+let indice = 0;
+
+if (slides.length > 0) {
+
+    setInterval(() => {
+
+        slides[indice]
+            .classList
+            .remove("active");
+
+        indice++;
+
+        if (
+            indice >= slides.length
+        ) {
+
+            indice = 0;
+
+        }
+
+        slides[indice]
+            .classList
+            .add("active");
+
+    }, 4000);
+
+}
+
+// =====================================
+// BUSCADOR DE SERVICIOS
+// =====================================
+
+const buscar =
+    document.getElementById("buscar");
+
+if (buscar) {
+
+    buscar.addEventListener(
+        "keyup",
+        () => {
+
+            const texto =
+                buscar.value.toLowerCase();
+
+            document
+                .querySelectorAll(".card")
+                .forEach(card => {
+
+                    const contenido =
+                        card.innerText
+                            .toLowerCase();
+
+                    card.style.display =
+                        contenido.includes(texto)
+                            ? "block"
+                            : "none";
+
+                });
+
+        }
+    );
+
+}
+
+// =====================================
+// FORMULARIO WHATSAPP
+// =====================================
+
+const contacto =
+    document.getElementById(
+        "contactoForm"
+    );
+
+if (contacto) {
+
+    contacto.addEventListener(
+        "submit",
+        (e) => {
+
+            e.preventDefault();
+
+            const nombre =
+                document.getElementById(
+                    "nombre"
+                ).value;
+
+            const telefono =
+                document.getElementById(
+                    "telefono"
+                ).value;
+
+            const asunto =
+                document.getElementById(
+                    "asunto"
+                ).value;
+
+            const mensaje =
+                document.getElementById(
+                    "mensaje"
+                ).value;
+
+            const texto =
+`Hola Family Pet 🐾
+
+Nombre:
+${nombre}
+
+Teléfono:
+${telefono}
+
+Asunto:
+${asunto}
+
+Mensaje:
+${mensaje}`;
+
+            const url =
+                "https://wa.me/573150672371?text=" +
+                encodeURIComponent(texto);
+
+            window.open(
+                url,
+                "_blank"
+            );
+
+        }
+    );
+
+}
+
+// =====================================
+// AÑO AUTOMÁTICO
+// =====================================
+
+const anio =
+    document.getElementById("anio");
+
+if (anio) {
+
+    anio.textContent =
+        new Date().getFullYear();
+
+}
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registrarse | Family Pet</title>
+
+    <link rel="stylesheet" href="estilos.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+   <form id="registroForm">
+
+    <input
+        type="text"
+        id="nombre"
+        placeholder="Nombre"
+        required>
+
+    <input
+        type="text"
+        id="apellido"
+        placeholder="Apellido"
+        required>
+
+    <input
+        type="text"
+        id="usuario"
+        placeholder="Nombre de usuario"
+        required>
+
+    <input
+        type="email"
+        id="correo"
+        placeholder="Correo electrónico"
+        required>
+
+    <input
+        type="tel"
+        id="telefono"
+        placeholder="Teléfono"
+        required>
+
+    <input
+        type="password"
+        id="password"
+        placeholder="Contraseña"
+        required>
+
+    <input
+        type="password"
+        id="confirmar"
+        placeholder="Confirmar contraseña"
+        required>
+
+    <button
+        type="submit"
+        class="btn-login2">
+
+        <i class="fa-solid fa-user-plus"></i>
+
+        Registrarse
+
+    </button>
+
+</form>
+
+</form>
+
+<script>
+
+document.getElementById("registroForm").addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const apellido = document.getElementById("apellido").value.trim();
+    const usuario = document.getElementById("usuario").value.trim();
+    const correo = document.getElementById("correo").value.trim();
+    const telefono = document.getElementById("telefono").value.trim();
+    const password = document.getElementById("password").value;
+    const confirmar = document.getElementById("confirmar").value;
+
+    if(password !== confirmar){
+        alert("❌ Las contraseñas no coinciden.");
+        return;
+    }
+
+    try{
+
+        const respuesta = await fetch("http://localhost:3000/api/registro",{
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+
+                nombre,
+                apellido,
+                usuario,
+                correo,
+                telefono,
+                password
+
+            })
+
+        });
+
+        const datos = await respuesta.json();
+
+        if(respuesta.ok){
+
+            alert(datos.mensaje);
+
+            document.getElementById("registroForm").reset();
+
+            window.location.href="login.html";
+
+        }else{
+
+            alert(datos.mensaje);
+
+        }
+
+    }catch(error){
+
+        console.error(error);
+
+        alert("❌ No se pudo conectar con el servidor.");
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
