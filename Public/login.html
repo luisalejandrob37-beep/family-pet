@@ -36,6 +36,7 @@ alt="Family Pet">
 
 </header>
 
+
 <section class="login-section">
 
 <div class="login-card">
@@ -45,6 +46,7 @@ alt="Family Pet">
 <h2>Iniciar Sesión</h2>
 
 <p>Ingresa a tu cuenta de Family Pet</p>
+
 
 <form id="loginForm">
 
@@ -62,6 +64,7 @@ required>
 
 </div>
 
+
 <label>Contraseña</label>
 
 <div class="input-box">
@@ -76,6 +79,7 @@ required>
 
 </div>
 
+
 <button type="submit" class="btn">
 
 <i class="fa-solid fa-right-to-bracket"></i>
@@ -84,9 +88,11 @@ Ingresar
 
 </button>
 
+
 <p id="mensaje"></p>
 
 </form>
+
 
 <div class="registro-link">
 
@@ -98,6 +104,7 @@ Registrarse
 
 </div>
 
+
 <a href="family_pet.html" class="volver">
 ← Volver al inicio
 </a>
@@ -106,17 +113,22 @@ Registrarse
 
 </section>
 
+
 <script>
 
 // =====================================
-// CONFIGURACIÓN DEL SERVIDOR
+// FAMILY PET - LOGIN
 // =====================================
 
-const API_URL = "http://localhost:3000";
-
-// =====================================
-// INICIO DE SESIÓN
-// =====================================
+// IMPORTANTE:
+// No usamos localhost.
+// El frontend y el backend están en Render.
+//
+// La página está en:
+// https://family-pet.onrender.com
+//
+// Y el login está en:
+// /api/login
 
 const formulario = document.getElementById("loginForm");
 
@@ -124,19 +136,39 @@ formulario.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
+
+    // =====================================
+    // OBTENER DATOS DEL FORMULARIO
+    // =====================================
+
     const correo =
         document.getElementById("correo").value.trim();
 
     const password =
         document.getElementById("password").value;
 
+
     const mensaje =
         document.getElementById("mensaje");
 
+
+    // Mensaje mientras conecta
+
+    mensaje.style.color = "blue";
+
+    mensaje.innerHTML =
+        "⏳ Conectando con el servidor...";
+
+
     try {
 
+
+        // =====================================
+        // ENVIAR LOGIN AL BACKEND
+        // =====================================
+
         const respuesta = await fetch(
-            `${API_URL}/api/login`,
+            "/api/login",
             {
 
                 method: "POST",
@@ -146,33 +178,60 @@ formulario.addEventListener("submit", async (e) => {
                 },
 
                 body: JSON.stringify({
-                    correo,
-                    password
+
+                    correo: correo,
+
+                    password: password
+
                 })
 
             }
         );
 
+
+        // =====================================
+        // LEER RESPUESTA DEL SERVIDOR
+        // =====================================
+
         const datos = await respuesta.json();
+
+
+        // =====================================
+        // LOGIN CORRECTO
+        // =====================================
 
         if (respuesta.ok) {
 
-            // Guardar usuario
-            localStorage.setItem(
-                "usuario",
-                JSON.stringify(datos.usuario)
-            );
 
-            // Compatibilidad con el sistema anterior
+            // Guardar usuario
+
+            if (datos.usuario) {
+
+                localStorage.setItem(
+                    "usuario",
+                    JSON.stringify(datos.usuario)
+                );
+
+            }
+
+
+            // Compatibilidad con sistema anterior
+
             localStorage.setItem(
                 "usuarioLogueado",
                 "true"
             );
 
+
             mensaje.style.color = "green";
 
             mensaje.innerHTML =
                 "✅ Inicio de sesión correcto";
+
+
+            // =====================================
+            // REDIRECCIÓN
+            // =====================================
 
             setTimeout(() => {
 
@@ -181,26 +240,43 @@ formulario.addEventListener("submit", async (e) => {
 
             }, 1000);
 
+
         } else {
+
+
+            // =====================================
+            // ERROR DEL SERVIDOR
+            // =====================================
 
             mensaje.style.color = "red";
 
             mensaje.innerHTML =
-                "❌ " + (datos.mensaje || "Error al iniciar sesión");
+                "❌ " +
+                (
+                    datos.mensaje ||
+                    "Correo o contraseña incorrectos"
+                );
 
         }
 
+
     } catch (error) {
 
-        mensaje.style.color = "red";
 
-        mensaje.innerHTML =
-            "❌ No se pudo conectar con el servidor.";
+        // =====================================
+        // ERROR DE CONEXIÓN
+        // =====================================
 
         console.error(
             "Error de conexión:",
             error
         );
+
+
+        mensaje.style.color = "red";
+
+        mensaje.innerHTML =
+            "❌ No se pudo conectar con el servidor.";
 
     }
 
