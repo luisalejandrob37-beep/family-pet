@@ -3,18 +3,18 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Iniciar Sesión | Family Pet</title>
+    <title>Iniciar Sesión | Family Pet</title>
 
-<link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="estilos.css">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
 </head>
 
@@ -22,94 +22,108 @@ rel="stylesheet">
 
 <header>
 
-<div class="logo">
+    <div class="logo">
 
-<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
-alt="Family Pet">
+        <img
+            src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
+            alt="Family Pet">
 
-<div>
-<h1>Family Pet</h1>
-<span>Dando una Segunda Oportunidad</span>
-</div>
+        <div>
 
-</div>
+            <h1>Family Pet</h1>
+
+            <span>Dando una Segunda Oportunidad</span>
+
+        </div>
+
+    </div>
 
 </header>
 
 
 <section class="login-section">
 
-<div class="login-card">
+    <div class="login-card">
 
-<i class="fa-solid fa-user-circle icon-login"></i>
+        <i class="fa-solid fa-user-circle icon-login"></i>
 
-<h2>Iniciar Sesión</h2>
+        <h2>Iniciar Sesión</h2>
 
-<p>Ingresa a tu cuenta de Family Pet</p>
-
-
-<form id="loginForm">
-
-<label>Correo electrónico</label>
-
-<div class="input-box">
-
-<i class="fa-solid fa-envelope"></i>
-
-<input 
-type="email"
-id="correo"
-placeholder="Correo electrónico"
-required>
-
-</div>
+        <p>Ingresa a tu cuenta de Family Pet</p>
 
 
-<label>Contraseña</label>
+        <form id="loginForm">
 
-<div class="input-box">
+            <label for="correo">
+                Correo electrónico
+            </label>
 
-<i class="fa-solid fa-lock"></i>
+            <div class="input-box">
 
-<input
-type="password"
-id="password"
-placeholder="Contraseña"
-required>
+                <i class="fa-solid fa-envelope"></i>
 
-</div>
+                <input
+                    type="email"
+                    id="correo"
+                    placeholder="Correo electrónico"
+                    required>
 
-
-<button type="submit" class="btn">
-
-<i class="fa-solid fa-right-to-bracket"></i>
-
-Ingresar
-
-</button>
+            </div>
 
 
-<p id="mensaje"></p>
+            <label for="password">
+                Contraseña
+            </label>
 
-</form>
+            <div class="input-box">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Contraseña"
+                    required>
+
+            </div>
 
 
-<div class="registro-link">
+            <button
+                type="submit"
+                class="btn">
 
-¿No tienes cuenta?
+                <i class="fa-solid fa-right-to-bracket"></i>
 
-<a href="registro.html">
-Registrarse
-</a>
+                Ingresar
 
-</div>
+            </button>
 
 
-<a href="family_pet.html" class="volver">
-← Volver al inicio
-</a>
+            <p id="mensaje"></p>
 
-</div>
+        </form>
+
+
+        <div class="registro-link">
+
+            ¿No tienes cuenta?
+
+            <a href="registro.html">
+                Registrarse
+            </a>
+
+        </div>
+
+
+        <a
+            href="family_pet.html"
+            class="volver">
+
+            ← Volver al inicio
+
+        </a>
+
+    </div>
 
 </section>
 
@@ -121,166 +135,153 @@ Registrarse
 // =====================================
 
 // IMPORTANTE:
-// No usamos localhost.
-// El frontend y el backend están en Render.
+// No utilizar localhost.
 //
-// La página está en:
-// https://family-pet.onrender.com
+// Render y el navegador utilizan
+// el mismo dominio.
 //
-// Y el login está en:
+// Login:
 // /api/login
 
-const formulario = document.getElementById("loginForm");
-
-formulario.addEventListener("submit", async (e) => {
-
-    e.preventDefault();
+const formulario =
+    document.getElementById("loginForm");
 
 
-    // =====================================
-    // OBTENER DATOS DEL FORMULARIO
-    // =====================================
+formulario.addEventListener(
+    "submit",
+    async (e) => {
 
-    const correo =
-        document.getElementById("correo").value.trim();
-
-    const password =
-        document.getElementById("password").value;
+        e.preventDefault();
 
 
-    const mensaje =
-        document.getElementById("mensaje");
+        const correo =
+            document
+                .getElementById("correo")
+                .value
+                .trim();
 
 
-    // Mensaje mientras conecta
-
-    mensaje.style.color = "blue";
-
-    mensaje.innerHTML =
-        "⏳ Conectando con el servidor...";
+        const password =
+            document
+                .getElementById("password")
+                .value;
 
 
-    try {
+        const mensaje =
+            document.getElementById("mensaje");
 
 
-        // =====================================
-        // ENVIAR LOGIN AL BACKEND
-        // =====================================
+        mensaje.style.color = "blue";
 
-        const respuesta = await fetch(
-            "/api/login",
-            {
-
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify({
-
-                    correo: correo,
-
-                    password: password
-
-                })
-
-            }
-        );
+        mensaje.innerHTML =
+            "⏳ Conectando con el servidor...";
 
 
-        // =====================================
-        // LEER RESPUESTA DEL SERVIDOR
-        // =====================================
+        try {
 
-        const datos = await respuesta.json();
+            const respuesta = await fetch(
+                "/api/login",
+                {
 
+                    method: "POST",
 
-        // =====================================
-        // LOGIN CORRECTO
-        // =====================================
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
 
-        if (respuesta.ok) {
+                    body: JSON.stringify({
 
+                        correo: correo,
 
-            // Guardar usuario
+                        password: password
 
-            if (datos.usuario) {
+                    })
 
-                localStorage.setItem(
-                    "usuario",
-                    JSON.stringify(datos.usuario)
-                );
-
-            }
-
-
-            // Compatibilidad con sistema anterior
-
-            localStorage.setItem(
-                "usuarioLogueado",
-                "true"
+                }
             );
 
 
-            mensaje.style.color = "green";
+            // =====================================
+            // LEER RESPUESTA
+            // =====================================
 
-            mensaje.innerHTML =
-                "✅ Inicio de sesión correcto";
+            const datos =
+                await respuesta.json();
 
 
             // =====================================
-            // REDIRECCIÓN
+            // LOGIN CORRECTO
             // =====================================
 
-            setTimeout(() => {
+            if (respuesta.ok) {
 
-                window.location.href =
-                    "family_pet.html";
+                if (datos.usuario) {
 
-            }, 1000);
+                    localStorage.setItem(
+                        "usuario",
+                        JSON.stringify(
+                            datos.usuario
+                        )
+                    );
+
+                }
 
 
-        } else {
-
-
-            // =====================================
-            // ERROR DEL SERVIDOR
-            // =====================================
-
-            mensaje.style.color = "red";
-
-            mensaje.innerHTML =
-                "❌ " +
-                (
-                    datos.mensaje ||
-                    "Correo o contraseña incorrectos"
+                localStorage.setItem(
+                    "usuarioLogueado",
+                    "true"
                 );
+
+
+                mensaje.style.color =
+                    "green";
+
+                mensaje.innerHTML =
+                    "✅ Inicio de sesión correcto";
+
+
+                setTimeout(() => {
+
+                    window.location.href =
+                        "family_pet.html";
+
+                }, 1000);
+
+
+            } else {
+
+                mensaje.style.color =
+                    "red";
+
+                mensaje.innerHTML =
+                    "❌ " +
+                    (
+                        datos.mensaje ||
+                        "Correo o contraseña incorrectos."
+                    );
+
+            }
+
+
+        } catch (error) {
+
+            console.error(
+                "Error de conexión:",
+                error
+            );
+
+
+            mensaje.style.color =
+                "red";
+
+            mensaje.innerHTML =
+                "❌ No se pudo conectar con el servidor.";
 
         }
 
-
-    } catch (error) {
-
-
-        // =====================================
-        // ERROR DE CONEXIÓN
-        // =====================================
-
-        console.error(
-            "Error de conexión:",
-            error
-        );
-
-
-        mensaje.style.color = "red";
-
-        mensaje.innerHTML =
-            "❌ No se pudo conectar con el servidor.";
-
     }
-
-});
+);
 
 </script>
 
