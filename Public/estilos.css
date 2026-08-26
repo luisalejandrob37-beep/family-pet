@@ -783,6 +783,131 @@ TARJETAS SERVICIOS ORGANIZADAS
 }
 
 /*=========================================
+PRODUCTOS
+=========================================*/
+
+.productos-section{
+    padding:70px 0;
+}
+
+.productos-section h2{
+    text-align:center;
+
+    color:var(--azul);
+
+    font-size:35px;
+
+    margin-bottom:15px;
+}
+
+.categorias {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+
+.categoria {
+    position: relative;
+}
+
+/* BOTÓN */
+
+.categoria-btn {
+    background:linear-gradient(90deg,var(--verde),var(--azul));
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    padding: 12px 18px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    transition: 0.3s;
+}
+
+.categoria-btn span {
+    font-size: 11px;
+    transition: transform 0.3s ease;
+}
+
+/* HOVER */
+
+.categoria-btn:hover {
+    background: #4caf50;
+    color: white;
+    border-color: #4caf50;
+}
+
+/* SUBCATEGORÍAS */
+
+.subcategorias {
+    position: absolute;
+
+    top: calc(100% + 8px);
+    left: 0;
+
+    min-width: 210px;
+
+    background: white;
+
+    border-radius: 10px;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+
+    padding: 8px;
+
+    z-index: 100;
+
+    /* OCULTO */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+
+    transition: 0.3s;
+}
+
+/* ENLACES */
+
+.subcategorias a {
+    display: block;
+
+    padding: 10px 12px;
+
+    color: #333;
+    text-decoration: none;
+
+    border-radius: 7px;
+
+    transition: 0.2s;
+}
+
+.subcategorias a:hover {
+    background: #e8f5e9;
+    color: #4caf50;
+}
+
+/* CUANDO ESTÁ ABIERTA */
+
+.categoria.activa .subcategorias {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* GIRAR FLECHA */
+
+.categoria.activa .categoria-btn span {
+    transform: rotate(180deg);
+}
+
+/*=========================================
 GALERÍA
 =========================================*/
 
@@ -2097,20 +2222,53 @@ LOGIN Y REGISTRO CON REDES SOCIALES
     color:var(--verde);
 
 }
+
 /*=========================================
 BOTONES REDES SOCIALES
 =========================================*/
+
+.divisor{
+
+    margin:30px 0 20px;
+    color:#777;
+    font-weight:600;
+    position:relative;
+
+}
+
+.divisor::before{
+
+    content:"";
+    position:absolute;
+    top:50%;
+    left:0;
+    width:35%;
+    height:1px;
+    background:#ccc;
+
+}
+
+.divisor::after{
+
+    content:"";
+    position:absolute;
+    top:50%;
+    right:0;
+    width:35%;
+    height:1px;
+    background:#ccc;
+
+}
 
 .social-login{
 
     display:flex;
     flex-direction:column;
     gap:15px;
-    margin-top:25px;
 
 }
 
-.social-login a{
+.social-btn{
 
     display:flex;
     align-items:center;
@@ -2119,81 +2277,62 @@ BOTONES REDES SOCIALES
 
     padding:14px;
 
-    background:#fff;
-
-    color:#333;
-
     text-decoration:none;
 
-    border:2px solid #e5e7eb;
+    color:#fff;
 
-    border-radius:15px;
-
-    font-size:16px;
+    border-radius:12px;
 
     font-weight:600;
 
-    transition:.35s;
+    transition:.3s;
 
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
-
-}
-
-.social-login i{
-
-    font-size:22px;
+    font-size:16px;
 
 }
 
-/* GOOGLE */
+.social-btn i{
 
-.google i{
+    font-size:24px;
 
-    color:#16a516;
+}
+
+.google{
+
+    background:#DB4437;
 
 }
 
 .google:hover{
 
-    background:#0b7914;
-
-    color:#fff;
-
-    border-color:#0b7914;
-
-    transform:translateY(-4px);
+    background:#c23321;
+    transform:translateY(-3px);
 
 }
 
-.google:hover i{
+.facebook{
 
-    color:#fff;
-
-}
-
-/* FACEBOOK */
-
-.facebook i{
-
-    color:#1877F2;
+    background:#1877F2;
 
 }
 
 .facebook:hover{
 
-    background:#1877F2;
-
-    color:#fff;
-
-    border-color:#1877F2;
-
-    transform:translateY(-4px);
+    background:#0d65d9;
+    transform:translateY(-3px);
 
 }
 
-.facebook:hover i{
+.tiktok{
 
-    color:#fff;
+    background:#000;
+
+}
+
+.tiktok:hover{
+
+    background:#222;
+    transform:translateY(-3px);
 
 }
 
@@ -2223,25 +2362,5 @@ body.oscuro .divisor::before,
 body.oscuro .divisor::after{
 
     background:#555;
-
-}
-
-.usuario-logueado{
-
-background:#16a34a;
-
-color:white;
-
-padding:8px 15px;
-
-border-radius:20px;
-
-font-weight:600;
-
-margin-right:10px;
-
-display:flex;
-
-align-items:center;
 
 }
