@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 
@@ -134,14 +135,29 @@
 // FAMILY PET - LOGIN
 // =====================================
 
-// IMPORTANTE:
-// No utilizar localhost.
+// =====================================
+// DIRECCIÓN DE LA API
+// =====================================
+
+// Si estamos trabajando en localhost,
+// utiliza el servidor Node.js en el puerto 4000.
 //
-// Render y el navegador utilizan
-// el mismo dominio.
-//
-// Login:
-// /api/login
+// Si estamos en Render,
+// utiliza /api/login del mismo dominio.
+
+const API_LOGIN =
+    (
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1" ||
+        window.location.protocol === "file:"
+    )
+        ? "http://localhost:4000/api/login"
+        : "/api/login";
+
+
+// =====================================
+// FORMULARIO
+// =====================================
 
 const formulario =
     document.getElementById("loginForm");
@@ -154,6 +170,10 @@ formulario.addEventListener(
         e.preventDefault();
 
 
+        // =====================================
+        // OBTENER CORREO
+        // =====================================
+
         const correo =
             document
                 .getElementById("correo")
@@ -161,11 +181,19 @@ formulario.addEventListener(
                 .trim();
 
 
+        // =====================================
+        // OBTENER CONTRASEÑA
+        // =====================================
+
         const password =
             document
                 .getElementById("password")
                 .value;
 
+
+        // =====================================
+        // MENSAJE
+        // =====================================
 
         const mensaje =
             document.getElementById("mensaje");
@@ -177,29 +205,34 @@ formulario.addEventListener(
             "⏳ Conectando con el servidor...";
 
 
+        // =====================================
+        // ENVIAR LOGIN
+        // =====================================
+
         try {
 
-            const respuesta = await fetch(
-                "/api/login",
-                {
+            const respuesta =
+                await fetch(
+                    API_LOGIN,
+                    {
 
-                    method: "POST",
+                        method: "POST",
 
-                    headers: {
-                        "Content-Type":
-                            "application/json"
-                    },
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
 
-                    body: JSON.stringify({
+                        body: JSON.stringify({
 
-                        correo: correo,
+                            correo: correo,
 
-                        password: password
+                            password: password
 
-                    })
+                        })
 
-                }
-            );
+                    }
+                );
 
 
             // =====================================
@@ -216,6 +249,11 @@ formulario.addEventListener(
 
             if (respuesta.ok) {
 
+
+                // =================================
+                // GUARDAR USUARIO
+                // =================================
+
                 if (datos.usuario) {
 
                     localStorage.setItem(
@@ -228,11 +266,19 @@ formulario.addEventListener(
                 }
 
 
+                // =================================
+                // MARCAR SESIÓN
+                // =================================
+
                 localStorage.setItem(
                     "usuarioLogueado",
                     "true"
                 );
 
+
+                // =================================
+                // MENSAJE EXITOSO
+                // =================================
 
                 mensaje.style.color =
                     "green";
@@ -240,6 +286,10 @@ formulario.addEventListener(
                 mensaje.innerHTML =
                     "✅ Inicio de sesión correcto";
 
+
+                // =================================
+                // REDIRECCIÓN
+                // =================================
 
                 setTimeout(() => {
 
@@ -250,6 +300,11 @@ formulario.addEventListener(
 
 
             } else {
+
+
+                // =================================
+                // ERROR DE LOGIN
+                // =================================
 
                 mensaje.style.color =
                     "red";
@@ -266,6 +321,11 @@ formulario.addEventListener(
 
         } catch (error) {
 
+
+            // =====================================
+            // ERROR DE CONEXIÓN
+            // =====================================
+
             console.error(
                 "Error de conexión:",
                 error
@@ -274,6 +334,7 @@ formulario.addEventListener(
 
             mensaje.style.color =
                 "red";
+
 
             mensaje.innerHTML =
                 "❌ No se pudo conectar con el servidor.";
@@ -288,3 +349,4 @@ formulario.addEventListener(
 </body>
 
 </html>
+```
