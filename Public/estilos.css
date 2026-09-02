@@ -2864,3 +2864,372 @@ CELULAR
     }
 
 }
+
+/* =========================================
+   TARJETAS DE PRODUCTOS
+========================================= */
+
+.producto-card {
+
+    padding: 25px;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.15);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.producto-card:hover {
+
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 14px 30px rgba(0,0,0,.22);
+}
+
+
+.producto-imagen {
+
+    width: 90px;
+    height: 90px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #eef4ff;
+
+    font-size: 45px;
+}
+
+
+.producto-card h3 {
+
+    margin-bottom: 10px;
+
+    color: #1c2938;
+
+    font-size: 17px;
+}
+
+
+.producto-card p {
+
+    margin-bottom: 18px;
+
+    color: #18a85b;
+
+    font-size: 18px;
+
+    font-weight: 700;
+}
+
+
+.producto-card button {
+
+    padding: 10px 18px;
+
+    border: 0;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            110deg,
+            #18a85b,
+            #2869df
+        );
+
+    color: #ffffff;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: transform .2s ease;
+}
+
+
+.producto-card button:hover {
+
+    transform: scale(1.05);
+}
+
+
+/* =========================================
+   MODO OSCURO
+========================================= */
+
+body.oscuro .producto-card {
+
+    background: #1c2636;
+}
+
+body.oscuro .producto-card h3 {
+
+    color: #ffffff;
+}
+
+body.oscuro .producto-imagen {
+
+    background: #263449;
+}
+
+/* =========================================
+   PRODUCTOS EN VENTA
+========================================= */
+
+.productos-section {
+    width: 100%;
+    padding: 45px 25px;
+    background: #101827;
+}
+
+.productos-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.titulo-productos {
+    margin: 0 0 10px;
+
+    text-align: center;
+
+    font-size: 36px;
+    font-weight: 700;
+
+    color: #ffffff;
+}
+
+.descripcion-productos {
+    margin-bottom: 30px;
+
+    text-align: center;
+
+    color: #dce5f0;
+
+    font-size: 16px;
+}
+
+
+/* =========================================
+   CATEGORÍAS
+========================================= */
+
+.categorias-productos {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+
+/* =========================================
+   BOTONES
+========================================= */
+
+.categoria-btn {
+    min-width: 165px;
+    height: 49px;
+
+    padding: 0 18px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    border: 2px solid #ffffff;
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            110deg,
+            #18a85b,
+            #2869df
+        );
+
+    color: #000000;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        filter .25s ease;
+}
+
+
+/* =========================================
+   FLECHA
+========================================= */
+
+.categoria-btn .flecha {
+    color: #ffffff;
+
+    font-size: 13px;
+
+    transition: transform .25s ease;
+}
+
+
+/* =========================================
+   EFECTO HOVER
+========================================= */
+
+.categoria-btn:hover {
+
+    transform: translateY(-3px);
+
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, .30);
+}
+
+
+/* =========================================
+   BOTÓN ACTIVO
+========================================= */
+
+.categoria-btn.activo {
+
+    box-shadow:
+        0 0 0 3px rgba(255,255,255,.25);
+
+    transform: translateY(-2px);
+}
+
+.categoria-btn.activo .flecha {
+    transform: rotate(180deg);
+}
+
+
+/* =========================================
+   CONTENEDOR DE PRODUCTOS
+========================================= */
+
+.contenedor-productos {
+
+    margin-top: 35px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 25px;
+}
+
+
+/* =========================================
+   MENSAJE
+========================================= */
+
+.mensaje-productos {
+
+    grid-column: 1 / -1;
+
+    padding: 25px;
+
+    text-align: center;
+
+    color: #ffffff;
+
+    font-size: 16px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .categorias-productos {
+        gap: 12px;
+    }
+
+    .categoria-btn {
+        min-width: 150px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .productos-section {
+        padding: 35px 15px;
+    }
+
+    .titulo-productos {
+        font-size: 28px;
+    }
+
+    .categorias-productos {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 12px;
+    }
+
+    .categoria-btn {
+        width: 100%;
+        min-width: 0;
+
+        padding: 0 12px;
+
+        font-size: 14px;
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    .categorias-productos {
+        grid-template-columns: 1fr;
+    }
+
+    .categoria-btn {
+        width: 100%;
+    }
+
+}

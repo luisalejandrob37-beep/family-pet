@@ -631,3 +631,224 @@ localStorage.removeItem("usuario");
 window.location.href="login.html";
 
 }
+
+/* =========================================
+   PRODUCTOS EN VENTA
+========================================= */
+
+const productos = {
+
+    alimentos: [
+        {
+            nombre: "Alimento para perros",
+            precio: "$45.000",
+            emoji: "🐶"
+        },
+        {
+            nombre: "Alimento para gatos",
+            precio: "$38.000",
+            emoji: "🐱"
+        },
+        {
+            nombre: "Snack para mascotas",
+            precio: "$15.000",
+            emoji: "🦴"
+        }
+    ],
+
+
+    accesorios: [
+        {
+            nombre: "Collar para perro",
+            precio: "$25.000",
+            emoji: "🐕"
+        },
+        {
+            nombre: "Correa para mascota",
+            precio: "$30.000",
+            emoji: "🦮"
+        },
+        {
+            nombre: "Plato para mascotas",
+            precio: "$18.000",
+            emoji: "🥣"
+        }
+    ],
+
+
+    higiene: [
+        {
+            nombre: "Shampoo para mascotas",
+            precio: "$22.000",
+            emoji: "🧴"
+        },
+        {
+            nombre: "Cepillo para mascotas",
+            precio: "$17.000",
+            emoji: "🪮"
+        },
+        {
+            nombre: "Toallas húmedas",
+            precio: "$12.000",
+            emoji: "🧼"
+        }
+    ],
+
+
+    juguetes: [
+        {
+            nombre: "Pelota para perros",
+            precio: "$15.000",
+            emoji: "⚽"
+        },
+        {
+            nombre: "Juguete mordedor",
+            precio: "$20.000",
+            emoji: "🦴"
+        },
+        {
+            nombre: "Ratón para gatos",
+            precio: "$12.000",
+            emoji: "🐭"
+        }
+    ],
+
+
+    ropa: [
+        {
+            nombre: "Camiseta para mascotas",
+            precio: "$28.000",
+            emoji: "👕"
+        },
+        {
+            nombre: "Abrigo para perro",
+            precio: "$40.000",
+            emoji: "🧥"
+        },
+        {
+            nombre: "Disfraz para mascotas",
+            precio: "$35.000",
+            emoji: "🐶"
+        }
+    ],
+
+
+    suplementos: [
+        {
+            nombre: "Vitaminas para mascotas",
+            precio: "$32.000",
+            emoji: "💊"
+        },
+        {
+            nombre: "Suplemento nutricional",
+            precio: "$45.000",
+            emoji: "🧪"
+        },
+        {
+            nombre: "Omega 3 para mascotas",
+            precio: "$38.000",
+            emoji: "💙"
+        }
+    ]
+
+};
+
+
+/* =========================================
+   MOSTRAR PRODUCTOS
+========================================= */
+
+function mostrarProductos(categoria) {
+
+    const contenedor =
+        document.getElementById(
+            "contenedor-productos"
+        );
+
+    const botones =
+        document.querySelectorAll(
+            ".categoria-btn"
+        );
+
+
+    botones.forEach(boton => {
+
+        boton.classList.remove("activo");
+
+    });
+
+
+    const productosCategoria =
+        productos[categoria];
+
+
+    if (!productosCategoria) {
+
+        contenedor.innerHTML =
+            `<p class="mensaje-productos">
+                No hay productos disponibles.
+            </p>`;
+
+        return;
+
+    }
+
+
+    contenedor.innerHTML = "";
+
+
+    productosCategoria.forEach(producto => {
+
+        const tarjeta =
+            document.createElement("div");
+
+        tarjeta.className =
+            "producto-card";
+
+
+        tarjeta.innerHTML = `
+
+            <div class="producto-imagen">
+
+                ${producto.emoji}
+
+            </div>
+
+            <h3>
+                ${producto.nombre}
+            </h3>
+
+            <p>
+                ${producto.precio}
+            </p>
+
+            <button
+                type="button"
+                onclick="agregarAlCarrito('${producto.nombre}')">
+
+                🛒 Comprar
+
+            </button>
+
+        `;
+
+
+        contenedor.appendChild(tarjeta);
+
+    });
+
+}
+
+
+/* =========================================
+   CARRITO
+========================================= */
+
+function agregarAlCarrito(nombre) {
+
+    alert(
+        "🛒 Producto agregado al carrito:\n\n" +
+        nombre
+    );
+
+}
