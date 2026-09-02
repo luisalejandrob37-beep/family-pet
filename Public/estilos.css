@@ -2364,3 +2364,503 @@ body.oscuro .divisor::after{
     background:#555;
 
 }
+
+/* =========================================
+   SECCIÓN CONTÁCTANOS
+========================================= */
+
+.contacto {
+    width: 100%;
+    padding: 70px 6%;
+    background: #101827;
+}
+
+.contacto-container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 70px;
+    align-items: center;
+}
+
+
+/* =========================================
+   INFORMACIÓN DE CONTACTO
+========================================= */
+
+.contacto-info {
+    width: 100%;
+}
+
+.contacto-info h2 {
+    margin-bottom: 25px;
+
+    font-size: 38px;
+    font-weight: 700;
+
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.contacto-info > p {
+    max-width: 700px;
+
+    margin-bottom: 30px;
+
+    font-size: 16px;
+    line-height: 1.8;
+
+    color: #ffffff;
+}
+
+
+/* =========================================
+   DATOS DE CONTACTO
+========================================= */
+
+.contacto-datos {
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+
+    margin-bottom: 30px;
+}
+
+.contacto-dato {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.contacto-dato i {
+    width: 25px;
+
+    font-size: 21px;
+
+    color: #18b957;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   REDES SOCIALES
+========================================= */
+
+.contacto-redes {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+}
+
+.contacto-redes a {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 19px;
+
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.contacto-redes a:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+
+/* =========================================
+   MAPA
+========================================= */
+
+.contacto-mapa {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.contacto-mapa h2 {
+    margin-bottom: 25px;
+
+    font-size: 38px;
+    font-weight: 700;
+
+    color: #ffffff;
+
+    text-align: center;
+}
+
+.contacto-mapa iframe {
+    width: 100%;
+    max-width: 520px;
+
+    height: 330px;
+
+    border: 0;
+
+    border-radius: 18px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .contacto-container {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+    .contacto-info {
+        text-align: center;
+    }
+
+    .contacto-info h2 {
+        justify-content: center;
+    }
+
+    .contacto-info > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .contacto-datos {
+        align-items: center;
+    }
+
+    .contacto-redes {
+        justify-content: center;
+    }
+
+}
+
+
+/* =========================================
+   CELULAR
+========================================= */
+
+@media (max-width: 600px) {
+
+    .contacto {
+        padding: 50px 20px;
+    }
+
+    .contacto-info h2,
+    .contacto-mapa h2 {
+        font-size: 30px;
+    }
+
+    .contacto-info > p {
+        font-size: 15px;
+    }
+
+    .contacto-dato {
+        font-size: 14px;
+
+        justify-content: center;
+    }
+
+    .contacto-mapa iframe {
+        height: 280px;
+    }
+
+}
+/*=========================================
+CONTACTO - DISEÑO ORGANIZADO
+=========================================*/
+
+.contacto-section{
+    width:100%;
+    padding:70px 20px;
+    background:#f5f8fc;
+}
+
+.contenedor-contacto{
+    width:100%;
+    max-width:1200px;
+    margin:0 auto;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:60px;
+    align-items:center;
+}
+
+
+/*=========================================
+INFORMACIÓN DE CONTACTO
+=========================================*/
+
+.info-contacto{
+    width:100%;
+}
+
+.info-contacto h2{
+    color:var(--azul);
+    font-size:36px;
+    font-weight:700;
+
+    margin-bottom:20px;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.info-contacto p{
+    color:#555;
+
+    font-size:16px;
+    line-height:1.8;
+
+    margin-bottom:25px;
+}
+
+
+/*=========================================
+DATOS
+=========================================*/
+
+.dato-contacto{
+    display:flex;
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:18px;
+
+    font-size:16px;
+    color:#333;
+}
+
+.dato-contacto i{
+    width:25px;
+
+    text-align:center;
+
+    color:var(--verde);
+
+    font-size:21px;
+}
+
+
+/*=========================================
+REDES SOCIALES
+=========================================*/
+
+.redes{
+    display:flex;
+    align-items:center;
+
+    gap:14px;
+
+    margin-top:30px;
+}
+
+.redes a{
+    width:46px;
+    height:46px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-decoration:none;
+
+    color:#fff !important;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.redes a:hover{
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.20);
+}
+
+
+/*=========================================
+MAPA
+=========================================*/
+
+.contacto-section .contenedor-contacto .mapa{
+    width:100%;
+    max-width:520px;
+
+    margin:0 auto;
+
+    overflow:hidden;
+
+    border-radius:18px;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.15);
+}
+
+.contacto-section .mapa iframe{
+    display:block;
+
+    width:100%;
+    height:350px;
+
+    border:0;
+}
+
+
+/*=========================================
+TÍTULO DEL MAPA
+=========================================*/
+
+.contacto-section .mapa-titulo{
+    color:var(--azul);
+
+    font-size:36px;
+    font-weight:700;
+
+    text-align:center;
+
+    margin-bottom:22px;
+}
+
+
+/*=========================================
+MODO OSCURO
+=========================================*/
+
+body.oscuro .contacto-section{
+    background:#101827;
+}
+
+body.oscuro .info-contacto h2,
+body.oscuro .contacto-section .mapa-titulo{
+    color:#fff;
+}
+
+body.oscuro .info-contacto p,
+body.oscuro .dato-contacto{
+    color:#e5e7eb;
+}
+
+
+/*=========================================
+TABLET
+=========================================*/
+
+@media(max-width:900px){
+
+    .contenedor-contacto{
+        grid-template-columns:1fr;
+
+        gap:45px;
+    }
+
+    .info-contacto{
+        text-align:center;
+    }
+
+    .info-contacto h2{
+        justify-content:center;
+    }
+
+    .info-contacto p{
+        max-width:700px;
+
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .dato-contacto{
+        justify-content:center;
+    }
+
+    .redes{
+        justify-content:center;
+    }
+
+    .contacto-section .contenedor-contacto .mapa{
+        max-width:650px;
+    }
+
+}
+
+
+/*=========================================
+CELULAR
+=========================================*/
+
+@media(max-width:600px){
+
+    .contacto-section{
+        padding:50px 15px;
+    }
+
+    .contenedor-contacto{
+        gap:35px;
+    }
+
+    .info-contacto h2,
+    .contacto-section .mapa-titulo{
+        font-size:30px;
+    }
+
+    .info-contacto p{
+        font-size:14px;
+    }
+
+    .dato-contacto{
+        font-size:14px;
+
+        gap:10px;
+    }
+
+    .redes{
+        gap:10px;
+    }
+
+    .redes a{
+        width:42px;
+        height:42px;
+    }
+
+    .contacto-section .mapa iframe{
+        height:280px;
+    }
+
+}
