@@ -1,250 +1,591 @@
-<script>
-// =====================================
-// FAMILY PET - LOGIN
-// =====================================
+<!DOCTYPE html>
+<html lang="es">
 
-// =====================================
-// DIRECCIÓN DE LA API
-// =====================================
+<head>
 
-// Servidor Node.js de Family Pet
-const API_LOGIN = "http://localhost:3000/api/login";
+    <meta charset="UTF-8">
 
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-// =====================================
-// FORMULARIO
-// =====================================
+    <title>Family Pet - Iniciar Sesión</title>
 
-const formulario = document.getElementById("loginForm");
-const mensaje = document.getElementById("mensaje");
+    <style>
 
-
-// =====================================
-// COMPROBAR QUE EXISTE EL FORMULARIO
-// =====================================
-
-if (formulario) {
-
-    formulario.addEventListener("submit", async (e) => {
-
-        e.preventDefault();
-
-
-        // =================================
-        // OBTENER DATOS
-        // =================================
-
-        const campoCorreo = document.getElementById("correo");
-        const campoPassword = document.getElementById("password");
-
-        if (!campoCorreo || !campoPassword) {
-
-            console.error(
-                "No se encontraron los campos correo o password."
-            );
-
-            return;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        const correo = campoCorreo.value.trim();
-        const password = campoPassword.value;
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
 
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-        // =================================
-        // VALIDAR DATOS
-        // =================================
+            background: linear-gradient(
+                135deg,
+                #007A64,
+                #00a889
+            );
+        }
 
-        if (!correo || !password) {
+        .login-container {
+            width: 100%;
+            max-width: 420px;
 
-            if (mensaje) {
+            padding: 20px;
+        }
 
-                mensaje.style.color = "red";
+        .login-card {
+            background: white;
 
-                mensaje.textContent =
-                    "❌ Debes ingresar correo y contraseña.";
+            border-radius: 20px;
 
+            padding: 40px 35px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.20);
+
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 55px;
+
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #007A64;
+
+            margin-bottom: 8px;
+
+            font-size: 30px;
+        }
+
+        .subtitulo {
+            color: #666;
+
+            margin-bottom: 30px;
+
+            font-size: 15px;
+        }
+
+        .campo {
+            text-align: left;
+
+            margin-bottom: 20px;
+        }
+
+        .campo label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-weight: bold;
+
+            color: #333;
+        }
+
+        .campo input {
+            width: 100%;
+
+            padding: 13px 15px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 10px;
+
+            font-size: 16px;
+
+            outline: none;
+
+            transition: 0.3s;
+        }
+
+        .campo input:focus {
+            border-color: #007A64;
+
+            box-shadow:
+                0 0 0 3px rgba(0, 122, 100, 0.12);
+        }
+
+        .boton-login {
+            width: 100%;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #007A64;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .boton-login:hover {
+            background: #005f4f;
+
+            transform: translateY(-1px);
+        }
+
+        .boton-login:disabled {
+            background: #999;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+        #mensaje {
+            min-height: 25px;
+
+            margin-top: 20px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+        .registro {
+            margin-top: 25px;
+
+            color: #666;
+
+            font-size: 14px;
+        }
+
+        .registro a {
+            color: #007A64;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .registro a:hover {
+            text-decoration: underline;
+        }
+
+        .volver {
+            display: inline-block;
+
+            margin-top: 20px;
+
+            color: #777;
+
+            text-decoration: none;
+
+            font-size: 14px;
+        }
+
+        .volver:hover {
+            color: #007A64;
+        }
+
+        @media (max-width: 480px) {
+
+            .login-container {
+                padding: 15px;
             }
 
-            return;
-        }
-
-
-        // =================================
-        // MENSAJE DE CARGA
-        // =================================
-
-        if (mensaje) {
-
-            mensaje.style.color = "blue";
-
-            mensaje.textContent =
-                "⏳ Conectando con el servidor...";
-
-        }
-
-
-        // =================================
-        // ENVIAR LOGIN
-        // =================================
-
-        try {
-
-            console.log(
-                "Enviando login a:",
-                API_LOGIN
-            );
-
-
-            const respuesta = await fetch(API_LOGIN, {
-
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify({
-
-                    correo: correo,
-
-                    password: password
-
-                })
-
-            });
-
-
-            // =================================
-            // LEER RESPUESTA
-            // =================================
-
-            let datos;
-
-            try {
-
-                datos = await respuesta.json();
-
-            } catch (error) {
-
-                datos = {
-                    mensaje:
-                        "El servidor no devolvió una respuesta válida."
-                };
-
+            .login-card {
+                padding: 30px 22px;
             }
 
+            h1 {
+                font-size: 26px;
+            }
 
-            console.log(
-                "Respuesta del servidor:",
-                datos
-            );
+        }
 
+    </style>
 
-            // =================================
-            // LOGIN CORRECTO
-            // =================================
-
-            if (respuesta.ok) {
+</head>
 
 
-                // =================================
-                // GUARDAR USUARIO
-                // =================================
-
-                if (datos.usuario) {
-
-                    localStorage.setItem(
-                        "usuario",
-                        JSON.stringify(datos.usuario)
-                    );
-
-                }
+<body>
 
 
-                // =================================
-                // MARCAR SESIÓN
-                // =================================
+    <div class="login-container">
 
-                localStorage.setItem(
-                    "usuarioLogueado",
-                    "true"
-                );
+        <div class="login-card">
 
 
-                // =================================
-                // MENSAJE
-                // =================================
+            <!-- LOGO -->
 
-                if (mensaje) {
+            <div class="logo">
+                🐾
+            </div>
 
-                    mensaje.style.color = "green";
+
+            <!-- TITULO -->
+
+            <h1>
+                Family Pet
+            </h1>
+
+
+            <p class="subtitulo">
+                Inicia sesión en tu cuenta
+            </p>
+
+
+            <!-- FORMULARIO -->
+
+            <form id="loginForm">
+
+
+                <!-- CORREO -->
+
+                <div class="campo">
+
+                    <label for="correo">
+                        Correo electrónico
+                    </label>
+
+                    <input
+                        type="email"
+                        id="correo"
+                        name="correo"
+                        placeholder="Ingrese su correo"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- CONTRASEÑA -->
+
+                <div class="campo">
+
+                    <label for="password">
+                        Contraseña
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Ingrese su contraseña"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- BOTON -->
+
+                <button
+                    type="submit"
+                    class="boton-login"
+                    id="btnLogin"
+                >
+                    Iniciar sesión
+                </button>
+
+
+                <!-- MENSAJE -->
+
+                <p id="mensaje"></p>
+
+
+            </form>
+
+
+            <!-- REGISTRO -->
+
+            <div class="registro">
+
+                ¿No tienes una cuenta?
+
+                <a href="registro.html">
+                    Regístrate aquí
+                </a>
+
+            </div>
+
+
+            <!-- VOLVER -->
+
+            <a
+                href="family_pet.html"
+                class="volver"
+            >
+                ← Volver a Family Pet
+            </a>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         JAVASCRIPT LOGIN
+    ====================================== -->
+
+    <script>
+
+        // =====================================
+        // FAMILY PET - LOGIN
+        // =====================================
+
+        const API_LOGIN =
+            "http://localhost:3000/api/login";
+
+
+        // =====================================
+        // ELEMENTOS
+        // =====================================
+
+        const formulario =
+            document.getElementById("loginForm");
+
+        const mensaje =
+            document.getElementById("mensaje");
+
+        const boton =
+            document.getElementById("btnLogin");
+
+
+        // =====================================
+        // FORMULARIO
+        // =====================================
+
+        if (formulario) {
+
+            formulario.addEventListener(
+                "submit",
+                async function (e) {
+
+                    e.preventDefault();
+
+
+                    // =================================
+                    // DATOS
+                    // =================================
+
+                    const correo =
+                        document
+                        .getElementById("correo")
+                        .value
+                        .trim();
+
+
+                    const password =
+                        document
+                        .getElementById("password")
+                        .value;
+
+
+                    // =================================
+                    // VALIDACIÓN
+                    // =================================
+
+                    if (!correo || !password) {
+
+                        mensaje.style.color = "red";
+
+                        mensaje.textContent =
+                            "❌ Debes ingresar correo y contraseña.";
+
+                        return;
+
+                    }
+
+
+                    // =================================
+                    // CARGANDO
+                    // =================================
+
+                    mensaje.style.color = "blue";
 
                     mensaje.textContent =
-                        "✅ Inicio de sesión correcto";
-
-                }
+                        "⏳ Conectando con el servidor...";
 
 
-                // =================================
-                // REDIRECCIÓN
-                // =================================
+                    boton.disabled = true;
 
-                setTimeout(() => {
-
-                    window.location.href =
-                        "family_pet.html";
-
-                }, 1000);
+                    boton.textContent =
+                        "Conectando...";
 
 
-            } else {
+                    // =================================
+                    // LOGIN
+                    // =================================
 
+                    try {
 
-                // =================================
-                // ERROR DE LOGIN
-                // =================================
-
-                if (mensaje) {
-
-                    mensaje.style.color = "red";
-
-                    mensaje.textContent =
-                        "❌ " +
-                        (
-                            datos.mensaje ||
-                            "Correo o contraseña incorrectos."
+                        console.log(
+                            "Enviando login a:",
+                            API_LOGIN
                         );
 
+
+                        const respuesta =
+                            await fetch(
+                                API_LOGIN,
+                                {
+
+                                    method: "POST",
+
+                                    headers: {
+                                        "Content-Type":
+                                            "application/json"
+                                    },
+
+                                    body:
+                                        JSON.stringify({
+                                            correo: correo,
+                                            password: password
+                                        })
+
+                                }
+                            );
+
+
+                        // =================================
+                        // RESPUESTA
+                        // =================================
+
+                        const datos =
+                            await respuesta.json();
+
+
+                        console.log(
+                            "Respuesta del servidor:",
+                            datos
+                        );
+
+
+                        // =================================
+                        // LOGIN CORRECTO
+                        // =================================
+
+                        if (respuesta.ok) {
+
+
+                            if (datos.usuario) {
+
+                                localStorage.setItem(
+                                    "usuario",
+                                    JSON.stringify(
+                                        datos.usuario
+                                    )
+                                );
+
+                            }
+
+
+                            localStorage.setItem(
+                                "usuarioLogueado",
+                                "true"
+                            );
+
+
+                            mensaje.style.color =
+                                "green";
+
+
+                            mensaje.textContent =
+                                "✅ Inicio de sesión correcto";
+
+
+                            // =================================
+                            // REDIRECCIÓN
+                            // =================================
+
+                            setTimeout(
+                                function () {
+
+                                    window.location.href =
+                                        "family_pet.html";
+
+                                },
+                                1000
+                            );
+
+
+                        } else {
+
+
+                            // =================================
+                            // ERROR LOGIN
+                            // =================================
+
+                            mensaje.style.color =
+                                "red";
+
+
+                            mensaje.textContent =
+                                "❌ " +
+                                (
+                                    datos.mensaje ||
+                                    "Correo o contraseña incorrectos."
+                                );
+
+
+                            boton.disabled = false;
+
+                            boton.textContent =
+                                "Iniciar sesión";
+
+                        }
+
+
+                    } catch (error) {
+
+
+                        // =================================
+                        // ERROR CONEXIÓN
+                        // =================================
+
+                        console.error(
+                            "Error de conexión:",
+                            error
+                        );
+
+
+                        mensaje.style.color =
+                            "red";
+
+
+                        mensaje.textContent =
+                            "❌ No se pudo conectar con el servidor. " +
+                            "Verifica que Node.js esté ejecutándose en el puerto 3000.";
+
+
+                        boton.disabled = false;
+
+                        boton.textContent =
+                            "Iniciar sesión";
+
+                    }
+
                 }
-
-            }
-
-
-        } catch (error) {
-
-
-            // =================================
-            // ERROR DE CONEXIÓN
-            // =================================
-
-            console.error(
-                "Error de conexión:",
-                error
             );
-
-
-            if (mensaje) {
-
-                mensaje.style.color = "red";
-
-                mensaje.textContent =
-                    "❌ No se pudo conectar con el servidor. " +
-                    "Verifica que Node.js esté ejecutándose en el puerto 3000.";
-
-            }
 
         }
 
-    });
+    </script>
 
-}
+
+</body>
+
+</html>
