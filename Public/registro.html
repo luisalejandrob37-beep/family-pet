@@ -8,31 +8,439 @@
 
     <title>Registrarse | Family Pet</title>
 
-    <link rel="stylesheet" href="estilos.css">
-
+    <!-- FONT AWESOME -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
+    <!-- GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
+    <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* =========================================
+           BODY
+        ========================================= */
+
+        body {
+
+            font-family: 'Poppins', sans-serif;
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #008f78,
+                    #00a88f
+                );
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 30px 15px;
+
+        }
+
+
+        /* =========================================
+           CONTENEDOR
+        ========================================= */
+
+        .registro-section {
+
+            width: 100%;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+        }
+
+
+        /* =========================================
+           TARJETA
+        ========================================= */
+
+        .registro-card {
+
+            width: 100%;
+
+            max-width: 380px;
+
+            background: #ffffff;
+
+            border-radius: 18px;
+
+            padding: 35px;
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.18);
+
+        }
+
+
+        /* =========================================
+           ICONO
+        ========================================= */
+
+        .icon-registro {
+
+            display: block;
+
+            text-align: center;
+
+            font-size: 42px;
+
+            color: #46355f;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        /* =========================================
+           TITULO
+        ========================================= */
+
+        .registro-card h2 {
+
+            text-align: center;
+
+            color: #00846f;
+
+            font-size: 30px;
+
+            font-weight: 700;
+
+            margin-bottom: 3px;
+
+        }
+
+
+        /* =========================================
+           SUBTITULO
+        ========================================= */
+
+        .registro-card > p {
+
+            text-align: center;
+
+            color: #777;
+
+            font-size: 14px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        /* =========================================
+           FORMULARIO
+        ========================================= */
+
+        #registroForm {
+
+            width: 100%;
+
+        }
+
+
+        /* =========================================
+           LABEL
+        ========================================= */
+
+        label {
+
+            display: block;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            color: #222;
+
+            margin-bottom: 6px;
+
+        }
+
+
+        /* =========================================
+           INPUT
+        ========================================= */
+
+        input {
+
+            width: 100%;
+
+            height: 46px;
+
+            padding: 0 15px;
+
+            border: 1px solid #cfcfcf;
+
+            border-radius: 11px;
+
+            outline: none;
+
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 14px;
+
+            color: #333;
+
+            margin-bottom: 16px;
+
+            transition: 0.2s;
+
+        }
+
+
+        /* =========================================
+           INPUT FOCUS
+        ========================================= */
+
+        input:focus {
+
+            border-color: #008f78;
+
+            box-shadow:
+                0 0 0 2px rgba(0, 143, 120, 0.12);
+
+        }
+
+
+        /* =========================================
+           BOTON
+        ========================================= */
+
+        .btn-registro {
+
+            width: 100%;
+
+            height: 48px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #00866f;
+
+            color: #ffffff;
+
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+            margin-top: 3px;
+
+        }
+
+
+        .btn-registro:hover {
+
+            background: #00745f;
+
+        }
+
+
+        .btn-registro:disabled {
+
+            opacity: 0.7;
+
+            cursor: not-allowed;
+
+        }
+
+
+        .btn-registro i {
+
+            margin-right: 7px;
+
+        }
+
+
+        /* =========================================
+           MENSAJE
+        ========================================= */
+
+        #mensaje {
+
+            text-align: center;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            margin-top: 18px;
+
+            min-height: 20px;
+
+        }
+
+
+        /* =========================================
+           LINK LOGIN
+        ========================================= */
+
+        .registro-link {
+
+            text-align: center;
+
+            margin-top: 25px;
+
+            font-size: 13px;
+
+            color: #777;
+
+        }
+
+
+        .registro-link a {
+
+            color: #008f78;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+        }
+
+
+        .registro-link a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* =========================================
+           VOLVER
+        ========================================= */
+
+        .volver {
+
+            display: block;
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            color: #777;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+        }
+
+
+        .volver:hover {
+
+            color: #008f78;
+
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 480px) {
+
+            body {
+
+                padding: 20px 12px;
+
+                align-items: flex-start;
+
+            }
+
+
+            .registro-card {
+
+                padding: 28px 22px;
+
+                margin-top: 10px;
+
+            }
+
+
+            .registro-card h2 {
+
+                font-size: 26px;
+
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-    <section class="login-section">
 
-        <div class="login-card">
+    <!-- =========================================
+         REGISTRO
+    ========================================= -->
 
-            <i class="fa-solid fa-user-plus icon-login"></i>
+    <section class="registro-section">
 
-            <h2>Crear cuenta</h2>
 
-            <p>Regístrate en Family Pet</p>
+        <div class="registro-card">
 
+
+            <!-- ICONO -->
+
+            <i class="fa-solid fa-user-plus icon-registro"></i>
+
+
+            <!-- TITULO -->
+
+            <h2>
+                Crear cuenta
+            </h2>
+
+
+            <!-- SUBTITULO -->
+
+            <p>
+                Regístrate en Family Pet
+            </p>
+
+
+            <!-- =====================================
+                 FORMULARIO
+            ====================================== -->
 
             <form id="registroForm">
 
+
+                <!-- NOMBRE -->
 
                 <label for="nombre">
                     Nombre
@@ -41,9 +449,12 @@
                 <input
                     type="text"
                     id="nombre"
-                    placeholder="Nombre"
+                    placeholder="Ingrese su nombre"
+                    autocomplete="given-name"
                     required>
 
+
+                <!-- APELLIDO -->
 
                 <label for="apellido">
                     Apellido
@@ -52,9 +463,12 @@
                 <input
                     type="text"
                     id="apellido"
-                    placeholder="Apellido"
+                    placeholder="Ingrese su apellido"
+                    autocomplete="family-name"
                     required>
 
+
+                <!-- USUARIO -->
 
                 <label for="usuario">
                     Nombre de usuario
@@ -63,9 +477,12 @@
                 <input
                     type="text"
                     id="usuario"
-                    placeholder="Nombre de usuario"
+                    placeholder="Ingrese su usuario"
+                    autocomplete="username"
                     required>
 
+
+                <!-- CORREO -->
 
                 <label for="correo">
                     Correo electrónico
@@ -74,9 +491,12 @@
                 <input
                     type="email"
                     id="correo"
-                    placeholder="Correo electrónico"
+                    placeholder="Ingrese su correo"
+                    autocomplete="email"
                     required>
 
+
+                <!-- TELEFONO -->
 
                 <label for="telefono">
                     Teléfono
@@ -85,9 +505,12 @@
                 <input
                     type="tel"
                     id="telefono"
-                    placeholder="Teléfono"
+                    placeholder="Ingrese su teléfono"
+                    autocomplete="tel"
                     required>
 
+
+                <!-- CONTRASEÑA -->
 
                 <label for="password">
                     Contraseña
@@ -96,9 +519,12 @@
                 <input
                     type="password"
                     id="password"
-                    placeholder="Contraseña"
+                    placeholder="Ingrese su contraseña"
+                    autocomplete="new-password"
                     required>
 
+
+                <!-- CONFIRMAR -->
 
                 <label for="confirmar">
                     Confirmar contraseña
@@ -107,13 +533,17 @@
                 <input
                     type="password"
                     id="confirmar"
-                    placeholder="Confirmar contraseña"
+                    placeholder="Confirme su contraseña"
+                    autocomplete="new-password"
                     required>
 
 
+                <!-- BOTON -->
+
                 <button
                     type="submit"
-                    class="btn-login2">
+                    class="btn-registro"
+                    id="btnRegistro">
 
                     <i class="fa-solid fa-user-plus"></i>
 
@@ -122,14 +552,21 @@
                 </button>
 
 
+                <!-- MENSAJE -->
+
                 <p id="mensaje"></p>
+
 
             </form>
 
 
+            <!-- =====================================
+                 LOGIN
+            ====================================== -->
+
             <div class="registro-link">
 
-                ¿Ya tienes cuenta?
+                ¿Ya tienes una cuenta?
 
                 <a href="login.html">
                     Iniciar sesión
@@ -138,226 +575,278 @@
             </div>
 
 
+            <!-- =====================================
+                 VOLVER
+            ====================================== -->
+
             <a
                 href="family_pet.html"
                 class="volver">
 
-                ← Volver al inicio
+                ← Volver a Family Pet
 
             </a>
 
+
         </div>
+
 
     </section>
 
 
-<script>
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
 
-// =====================================
-// FAMILY PET - REGISTRO
-// =====================================
-
-// NO UTILIZAR:
-// http://localhost:3000
-//
-// Render utiliza el mismo dominio.
-//
-// Registro:
-// /api/registro
-
-
-const formulario =
-    document.getElementById("registroForm");
-
-
-formulario.addEventListener(
-    "submit",
-    async function(e) {
-
-        e.preventDefault();
-
+    <script>
 
         // =====================================
-        // OBTENER DATOS
+        // FAMILY PET - REGISTRO
         // =====================================
 
-        const nombre =
-            document
-                .getElementById("nombre")
-                .value
-                .trim();
 
-
-        const apellido =
-            document
-                .getElementById("apellido")
-                .value
-                .trim();
-
-
-        const usuario =
-            document
-                .getElementById("usuario")
-                .value
-                .trim();
-
-
-        const correo =
-            document
-                .getElementById("correo")
-                .value
-                .trim();
-
-
-        const telefono =
-            document
-                .getElementById("telefono")
-                .value
-                .trim();
-
-
-        const password =
-            document
-                .getElementById("password")
-                .value;
-
-
-        const confirmar =
-            document
-                .getElementById("confirmar")
-                .value;
-
+        const formulario =
+            document.getElementById("registroForm");
 
         const mensaje =
             document.getElementById("mensaje");
 
+        const btnRegistro =
+            document.getElementById("btnRegistro");
+
 
         // =====================================
-        // VALIDAR CONTRASEÑAS
+        // ENVIAR FORMULARIO
         // =====================================
 
-        if (password !== confirmar) {
+        formulario.addEventListener(
+            "submit",
+            async function (e) {
 
-            mensaje.style.color = "red";
-
-            mensaje.innerHTML =
-                "❌ Las contraseñas no coinciden.";
-
-            return;
-
-        }
+                e.preventDefault();
 
 
-        mensaje.style.color = "blue";
+                // =================================
+                // OBTENER DATOS
+                // =================================
 
-        mensaje.innerHTML =
-            "⏳ Registrando usuario...";
+                const nombre =
+                    document
+                        .getElementById("nombre")
+                        .value
+                        .trim();
 
 
-        try {
+                const apellido =
+                    document
+                        .getElementById("apellido")
+                        .value
+                        .trim();
 
 
-            // =====================================
-            // ENVIAR AL BACKEND
-            // =====================================
+                const usuario =
+                    document
+                        .getElementById("usuario")
+                        .value
+                        .trim();
 
-            const respuesta = await fetch(
-                "/api/registro",
-                {
 
-                    method: "POST",
+                const correo =
+                    document
+                        .getElementById("correo")
+                        .value
+                        .trim();
 
-                    headers: {
 
-                        "Content-Type":
-                            "application/json"
+                const telefono =
+                    document
+                        .getElementById("telefono")
+                        .value
+                        .trim();
 
-                    },
 
-                    body: JSON.stringify({
+                const password =
+                    document
+                        .getElementById("password")
+                        .value;
 
-                        nombre,
-                        apellido,
-                        usuario,
-                        correo,
-                        telefono,
-                        password
 
-                    })
+                const confirmar =
+                    document
+                        .getElementById("confirmar")
+                        .value;
+
+
+                // =================================
+                // VALIDAR CONTRASEÑAS
+                // =================================
+
+                if (password !== confirmar) {
+
+                    mensaje.style.color = "red";
+
+                    mensaje.innerHTML =
+                        "❌ Las contraseñas no coinciden.";
+
+                    return;
 
                 }
-            );
 
 
-            // =====================================
-            // LEER RESPUESTA
-            // =====================================
+                // =================================
+                // MOSTRAR PROCESO
+                // =================================
 
-            const datos =
-                await respuesta.json();
-
-
-            // =====================================
-            // REGISTRO CORRECTO
-            // =====================================
-
-            if (respuesta.ok) {
-
-                mensaje.style.color =
-                    "green";
+                mensaje.style.color = "#008f78";
 
                 mensaje.innerHTML =
-                    "✅ Usuario registrado correctamente.";
+                    "⏳ Registrando usuario...";
 
 
-                document
-                    .getElementById("registroForm")
-                    .reset();
+                btnRegistro.disabled = true;
+
+                btnRegistro.innerHTML =
+                    '<i class="fa-solid fa-spinner fa-spin"></i> Registrando...';
 
 
-                setTimeout(() => {
-
-                    window.location.href =
-                        "login.html";
-
-                }, 1500);
+                try {
 
 
-            } else {
+                    // =================================
+                    // ENVIAR AL SERVIDOR
+                    // =================================
 
-                mensaje.style.color =
-                    "red";
+                    const respuesta = await fetch(
+                        "/api/registro",
+                        {
 
-                mensaje.innerHTML =
-                    "❌ " +
-                    (
-                        datos.mensaje ||
-                        "No se pudo registrar el usuario."
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json"
+
+                            },
+
+                            body: JSON.stringify({
+
+                                nombre,
+                                apellido,
+                                usuario,
+                                correo,
+                                telefono,
+                                password
+
+                            })
+
+                        }
                     );
 
+
+                    // =================================
+                    // LEER RESPUESTA
+                    // =================================
+
+                    const datos =
+                        await respuesta.json();
+
+
+                    // =================================
+                    // REGISTRO CORRECTO
+                    // =================================
+
+                    if (respuesta.ok) {
+
+                        mensaje.style.color =
+                            "green";
+
+                        mensaje.innerHTML =
+                            "✅ Usuario registrado correctamente.";
+
+
+                        formulario.reset();
+
+
+                        btnRegistro.disabled =
+                            false;
+
+                        btnRegistro.innerHTML =
+                            '<i class="fa-solid fa-user-plus"></i> Registrarse';
+
+
+                        // Ir al Login
+
+                        setTimeout(() => {
+
+                            window.location.href =
+                                "login.html";
+
+                        }, 1500);
+
+
+                    }
+
+                    // =================================
+                    // ERROR DEL SERVIDOR
+                    // =================================
+
+                    else {
+
+                        mensaje.style.color =
+                            "red";
+
+                        mensaje.innerHTML =
+                            "❌ " +
+                            (
+                                datos.mensaje ||
+                                "No se pudo registrar el usuario."
+                            );
+
+
+                        btnRegistro.disabled =
+                            false;
+
+                        btnRegistro.innerHTML =
+                            '<i class="fa-solid fa-user-plus"></i> Registrarse';
+
+                    }
+
+
+                }
+
+                // =====================================
+                // ERROR DE CONEXION
+                // =====================================
+
+                catch (error) {
+
+                    console.error(
+                        "Error de conexión:",
+                        error
+                    );
+
+
+                    mensaje.style.color =
+                        "red";
+
+                    mensaje.innerHTML =
+                        "❌ No se pudo conectar con el servidor.";
+
+
+                    btnRegistro.disabled =
+                        false;
+
+                    btnRegistro.innerHTML =
+                        '<i class="fa-solid fa-user-plus"></i> Registrarse';
+
+                }
+
             }
+        );
 
+    </script>
 
-        } catch (error) {
-
-            console.error(
-                "Error de conexión:",
-                error
-            );
-
-
-            mensaje.style.color =
-                "red";
-
-            mensaje.innerHTML =
-                "❌ No se pudo conectar con el servidor.";
-
-        }
-
-    }
-);
-
-</script>
 
 </body>
 
