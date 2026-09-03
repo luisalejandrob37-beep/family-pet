@@ -1,5 +1,4 @@
 <script>
-
 // =====================================
 // FAMILY PET - LOGIN
 // =====================================
@@ -8,7 +7,8 @@
 // DIRECCIÓN DE LA API
 // =====================================
 
-const API_LOGIN = "/api/login";
+// Servidor Node.js de Family Pet
+const API_LOGIN = "http://localhost:3000/api/login";
 
 
 // =====================================
@@ -16,12 +16,11 @@ const API_LOGIN = "/api/login";
 // =====================================
 
 const formulario = document.getElementById("loginForm");
-
 const mensaje = document.getElementById("mensaje");
 
 
 // =====================================
-// COMPROBAR FORMULARIO
+// COMPROBAR QUE EXISTE EL FORMULARIO
 // =====================================
 
 if (formulario) {
@@ -35,24 +34,53 @@ if (formulario) {
         // OBTENER DATOS
         // =================================
 
-        const correo = document
-            .getElementById("correo")
-            .value
-            .trim();
+        const campoCorreo = document.getElementById("correo");
+        const campoPassword = document.getElementById("password");
 
-        const password = document
-            .getElementById("password")
-            .value;
+        if (!campoCorreo || !campoPassword) {
+
+            console.error(
+                "No se encontraron los campos correo o password."
+            );
+
+            return;
+        }
+
+        const correo = campoCorreo.value.trim();
+        const password = campoPassword.value;
+
+
+        // =================================
+        // VALIDAR DATOS
+        // =================================
+
+        if (!correo || !password) {
+
+            if (mensaje) {
+
+                mensaje.style.color = "red";
+
+                mensaje.textContent =
+                    "❌ Debes ingresar correo y contraseña.";
+
+            }
+
+            return;
+        }
 
 
         // =================================
         // MENSAJE DE CARGA
         // =================================
 
-        mensaje.style.color = "blue";
+        if (mensaje) {
 
-        mensaje.innerHTML =
-            "⏳ Conectando con el servidor...";
+            mensaje.style.color = "blue";
+
+            mensaje.textContent =
+                "⏳ Conectando con el servidor...";
+
+        }
 
 
         // =================================
@@ -61,7 +89,11 @@ if (formulario) {
 
         try {
 
-            console.log("Enviando login a:", API_LOGIN);
+            console.log(
+                "Enviando login a:",
+                API_LOGIN
+            );
+
 
             const respuesta = await fetch(API_LOGIN, {
 
@@ -72,8 +104,11 @@ if (formulario) {
                 },
 
                 body: JSON.stringify({
+
                     correo: correo,
+
                     password: password
+
                 })
 
             });
@@ -83,9 +118,26 @@ if (formulario) {
             // LEER RESPUESTA
             // =================================
 
-            const datos = await respuesta.json();
+            let datos;
 
-            console.log("Respuesta del servidor:", datos);
+            try {
+
+                datos = await respuesta.json();
+
+            } catch (error) {
+
+                datos = {
+                    mensaje:
+                        "El servidor no devolvió una respuesta válida."
+                };
+
+            }
+
+
+            console.log(
+                "Respuesta del servidor:",
+                datos
+            );
 
 
             // =================================
@@ -94,7 +146,11 @@ if (formulario) {
 
             if (respuesta.ok) {
 
-                // Guardar información del usuario
+
+                // =================================
+                // GUARDAR USUARIO
+                // =================================
+
                 if (datos.usuario) {
 
                     localStorage.setItem(
@@ -105,21 +161,34 @@ if (formulario) {
                 }
 
 
-                // Marcar sesión
+                // =================================
+                // MARCAR SESIÓN
+                // =================================
+
                 localStorage.setItem(
                     "usuarioLogueado",
                     "true"
                 );
 
 
-                // Mensaje
-                mensaje.style.color = "green";
+                // =================================
+                // MENSAJE
+                // =================================
 
-                mensaje.innerHTML =
-                    "✅ Inicio de sesión correcto";
+                if (mensaje) {
+
+                    mensaje.style.color = "green";
+
+                    mensaje.textContent =
+                        "✅ Inicio de sesión correcto";
+
+                }
 
 
-                // Redirigir
+                // =================================
+                // REDIRECCIÓN
+                // =================================
+
                 setTimeout(() => {
 
                     window.location.href =
@@ -130,23 +199,29 @@ if (formulario) {
 
             } else {
 
+
                 // =================================
                 // ERROR DE LOGIN
                 // =================================
 
-                mensaje.style.color = "red";
+                if (mensaje) {
 
-                mensaje.innerHTML =
-                    "❌ " +
-                    (
-                        datos.mensaje ||
-                        "Correo o contraseña incorrectos."
-                    );
+                    mensaje.style.color = "red";
+
+                    mensaje.textContent =
+                        "❌ " +
+                        (
+                            datos.mensaje ||
+                            "Correo o contraseña incorrectos."
+                        );
+
+                }
 
             }
 
 
         } catch (error) {
+
 
             // =================================
             // ERROR DE CONEXIÓN
@@ -158,15 +233,18 @@ if (formulario) {
             );
 
 
-            mensaje.style.color = "red";
+            if (mensaje) {
 
-            mensaje.innerHTML =
-                "❌ No se pudo conectar con el servidor.";
+                mensaje.style.color = "red";
+
+                mensaje.textContent =
+                    "❌ No se pudo conectar con el servidor. " +
+                    "Verifica que Node.js esté ejecutándose en el puerto 3000.";
+
+            }
 
         }
 
     });
 
 }
-
-</script>
