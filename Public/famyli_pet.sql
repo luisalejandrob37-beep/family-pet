@@ -161,7 +161,7 @@ INSERT INTO vacunas
 VALUES
 (1, 'Rabia', '2026-01-15'),
 (2, 'Triple Felina', '2026-02-20'),
-(3, 'Parvovirus', '2026-03-10')
+(3, 'Parvovirus', '2026-03-10');
 
 /* =========================================================
    INSERTAR ADOPCIONES
