@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const usuarioModel = require("../models/usuarioModel");
-const bcrypt = require("bcrypt");
+const authController = require("../controllers/authController");
 const db = require("../config/db");
 
 // =====================================
@@ -78,113 +78,9 @@ router.get("/:id", (req, res) => {
 // POST /usuarios
 // =====================================
 
-router.post("/", async (req, res) => {
-
-    const {
-        nombre,
-        apellido,
-        usuario,
-        correo,
-        telefono,
-        contrasena
-    } = req.body;
-
-
-    // =====================================
-    // VALIDAR CAMPOS
-    // =====================================
-
-    if (
-        !nombre ||
-        !apellido ||
-        !usuario ||
-        !correo ||
-        !contrasena
-    ) {
-
-        return res.status(400).json({
-            error: "Faltan datos obligatorios"
-        });
-    }
-
-
-    try {
-
-        // =====================================
-        // CIFRAR CONTRASEÑA
-        // =====================================
-
-        const contrasenaCifrada =
-            await bcrypt.hash(contrasena, 10);
-
-
-        // =====================================
-        // GUARDAR USUARIO
-        // =====================================
-
-        usuarioModel.crearUsuario(
-
-            nombre,
-            apellido,
-            usuario,
-            correo,
-            telefono,
-            contrasenaCifrada,
-
-            (error, resultado) => {
-
-                if (error) {
-
-                    console.error(
-                        "Error al crear usuario:",
-                        error
-                    );
-
-
-                    // Usuario o correo repetido
-                    if (error.code === "ER_DUP_ENTRY") {
-
-                        return res.status(409).json({
-                            error:
-                                "El usuario o correo ya existe"
-                        });
-                    }
-
-
-                    return res.status(500).json({
-                        error:
-                            "Error al crear el usuario"
-                    });
-                }
-
-
-                res.status(201).json({
-
-                    mensaje:
-                        "Usuario creado correctamente",
-
-                    id:
-                        resultado.insertId
-
-                });
-
-            }
-        );
-
-    } catch (error) {
-
-        console.error(
-            "Error al cifrar contraseña:",
-            error
-        );
-
-        res.status(500).json({
-            error:
-                "Error al procesar la contraseña"
-        });
-
-    }
-
+router.post("/", (req, res) => {
+    req.body.password = req.body.contrasena;
+    return authController.registrar(req, res);
 });
 
 

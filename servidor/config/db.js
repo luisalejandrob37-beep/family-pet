@@ -1,5 +1,22 @@
 const mysql = require("mysql2");
 
+const requiredVariables = [
+    "DB_HOST",
+    "DB_USER",
+    "DB_PASSWORD",
+    "DB_NAME"
+];
+
+const missingVariables = requiredVariables.filter(
+    (variable) => !process.env[variable]
+);
+
+if (missingVariables.length > 0) {
+    throw new Error(
+        `Faltan variables de entorno de MySQL: ${missingVariables.join(", ")}`
+    );
+}
+
 // =====================================
 // CONEXIÓN MYSQL - FAMILY PET
 // AIVEN + RENDER
@@ -15,7 +32,7 @@ const conexion = mysql.createConnection({
 
     database: process.env.DB_NAME,
 
-    port: process.env.DB_PORT || 3306,
+    port: Number(process.env.DB_PORT || 3306),
 
     // Aiven requiere conexión SSL
     ssl: {
@@ -36,7 +53,7 @@ conexion.connect((error) => {
 
         console.log(error);
 
-        return;
+        process.exit(1);
     }
 
     console.log("✅ MySQL conectado correctamente");
